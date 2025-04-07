@@ -1,8 +1,12 @@
-﻿namespace FlashcardsAPI.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace FlashcardsAPI.Models
 {
     public class Stack
     {
-        int Id { get; set; }
-        string Name { get; set; }
+        [Key]
+        public int StackId { get; set; }
+
+        public string StackName { get; set; }
     }
 }

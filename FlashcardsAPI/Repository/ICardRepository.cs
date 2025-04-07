@@ -4,9 +4,11 @@ namespace FlashcardsAPI.Repository
 {
     public interface ICardRepository
     {
-        void InsertQuestion(Question question);
-        void UpdateQuestion(int id, Question question);
-        void DeleteQuestion(int questionId);
-        Question FindQuestion(int questionId);
+        void InsertQuestion(Card card);
+        void UpdateQuestion(int id, Card card);
+        void DeleteQuestion(int cardId);
+        Card FindQuestion(int cardId);
+        List<Card> GetAllCards();
+        List<Card> GetCardsByStackId(int stackId);
     }
 }
