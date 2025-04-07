@@ -7,21 +7,49 @@ namespace FlashcardsAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CardController
+    public class CardController : ControllerBase
     {
-        private readonly IQuestionService _questionService;
-        public CardController(IQuestionService questionService)
+        private readonly ICardService _cardService;
+        public CardController(ICardService questionService)
         {
-            _questionService = questionService;
+            _cardService = questionService;
         }
 
-        [HttpPost]
-        public IActionResult AddCard(Question question)
+        [HttpGet]
+        public IActionResult GetAllCards()
         {
             try
             {
-                _questionService.AddCard(question);
-                return new OkObjectResult("Card added successfully");
+                var cards = _cardService.GetAllCards();
+                return new OkObjectResult(cards);
+            }
+            catch (Exception ex)
+            {
+                return new BadRequestObjectResult(ex.Message);
+            }
+        }
+
+        [HttpGet("{stackId}")]
+        public IActionResult GetCardsByStack(int stackId)
+        {
+            try
+            {
+                var cards = _cardService.GetCardsByStackId(stackId);
+                return new OkObjectResult(cards);
+            }
+            catch (Exception ex)
+            {
+                return new BadRequestObjectResult(ex.Message);
+            }
+        }
+
+        [HttpPost]
+        public IActionResult AddCard(Card card)
+        {
+            try
+            {
+                _cardService.AddCard(card);
+                return Ok(new { message = "Card added successfully" });
             }
             catch (Exception ex)
             {
@@ -30,12 +58,12 @@ namespace FlashcardsAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult EditCard(int id, Question question)
+        public IActionResult EditCard(int id, Card card)
         {
             try
             {
-                _questionService.EditCard(id, question);
-                return new OkObjectResult("Card edited successfully");
+                _cardService.EditCard(id, card);
+                return Ok(new { message = "Card edited successfully" });
             }
             catch (Exception ex)
             {
@@ -48,8 +76,8 @@ namespace FlashcardsAPI.Controllers
         {
             try
             {
-                _questionService.DeleteCard(id);
-                return new OkObjectResult("Card deleted successfully");
+                _cardService.DeleteCard(id);
+                return Ok(new { message = "Card deleted successfully" });
             }
             catch (Exception ex)
             {

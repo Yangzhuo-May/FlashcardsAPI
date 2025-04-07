@@ -1,6 +1,7 @@
 ﻿using FlashcardsAPI.Models;
 using FlashcardsAPI.Data;
 using Microsoft.EntityFrameworkCore;
+using System.Security.AccessControl;
 
 namespace FlashcardsAPI.Repository
 {
@@ -13,37 +14,48 @@ namespace FlashcardsAPI.Repository
             _context = context;
         }
 
-        public void InsertQuestion(Question question)
+        public void InsertQuestion(Card card)
         {
-            _context.Questions.Add(question);
+            _context.Cards.Add(card);
             _context.SaveChanges();
         }
 
-        public void UpdateQuestion(int id, Question question)
+        public void UpdateQuestion(int id, Card card)
         {
-            var questionDb = FindQuestion(id);
-            if (questionDb != null)
+            var cardDb = FindQuestion(id);
+            if (cardDb != null)
             {
-                questionDb.Problem = question.Problem;
-                questionDb.Answer = question.Answer;
+                cardDb.Question = card.Question;
+                cardDb.Answers = card.Answers;
+                cardDb.CorrectAnswer = card.CorrectAnswer;
                 _context.SaveChanges();
             }
         }
 
         public void DeleteQuestion(int id)
         {
-            var questionDb = FindQuestion(id);
-            if (questionDb != null)
+            var cardDb = FindQuestion(id);
+            if (cardDb != null)
             {
-                _context.Questions.Remove(questionDb);
+                _context.Cards.Remove(cardDb);
                 _context.SaveChanges();
             }
         }
 
-        public Question FindQuestion(int questionId)
+        public Card FindQuestion(int cardId)
         {
-            Question questionDb;
-            return questionDb = _context.Questions.Find(questionId);
+            Card cardDb;
+            return cardDb = _context.Cards.Find(cardId);
+        }
+
+        public List<Card> GetAllCards()
+        {
+            return _context.Cards.ToList();
+        }
+
+        public List<Card> GetCardsByStackId(int stackId)
+        {
+            return _context.Cards.Where(c => c.StackId == stackId).ToList();
         }
     }
 }

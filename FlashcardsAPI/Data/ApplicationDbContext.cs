@@ -9,6 +9,7 @@ namespace FlashcardsAPI.Data
         {   
         }
 
-        public DbSet<Question> Questions { get; set; }
+        public DbSet<Card> Cards { get; set; }
+        public DbSet<Stack> Stacks { get; set; }
     }
 }
