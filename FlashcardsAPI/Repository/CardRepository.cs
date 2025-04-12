@@ -2,6 +2,7 @@
 using FlashcardsAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Security.AccessControl;
+using FlashcardsAPI.Dtos;
 
 namespace FlashcardsAPI.Repository
 {
@@ -14,38 +15,30 @@ namespace FlashcardsAPI.Repository
             _context = context;
         }
 
-        public void InsertQuestion(Card card)
+        public void InsertCard(Card card)
         {
             _context.Cards.Add(card);
             _context.SaveChanges();
         }
 
-        public void UpdateQuestion(int id, Card card)
+        public void UpdateCard(Card cardToUpdate, CardDto updatedCard)
         {
-            var cardDb = FindQuestion(id);
-            if (cardDb != null)
-            {
-                cardDb.Question = card.Question;
-                cardDb.Answers = card.Answers;
-                cardDb.CorrectAnswer = card.CorrectAnswer;
-                _context.SaveChanges();
-            }
+            cardToUpdate.Question = updatedCard.Question;
+            cardToUpdate.Answers = updatedCard.Answers;
+            cardToUpdate.CorrectAnswer = updatedCard.CorrectAnswer;
+            _context.SaveChanges();
+            
         }
 
-        public void DeleteQuestion(int id)
-        {
-            var cardDb = FindQuestion(id);
-            if (cardDb != null)
-            {
-                _context.Cards.Remove(cardDb);
-                _context.SaveChanges();
-            }
+        public void DeleteCard(Card card)
+        {          
+            _context.Cards.Remove(card);
+            _context.SaveChanges();
         }
 
-        public Card FindQuestion(int cardId)
+        public Card? FindCard(int cardId)
         {
-            Card cardDb;
-            return cardDb = _context.Cards.Find(cardId);
+            return _context.Cards.Find(cardId) ?? null;
         }
 
         public List<Card> GetAllCards()

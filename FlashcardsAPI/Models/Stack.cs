@@ -7,6 +7,6 @@ namespace FlashcardsAPI.Models
         [Key]
         public int StackId { get; set; }
 
-        public string StackName { get; set; }
+        public required string StackName { get; set; }
     }
 }

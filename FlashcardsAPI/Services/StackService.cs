@@ -47,7 +47,12 @@ namespace FlashcardsAPI.Services
         {
             try
             {
-                _stackRepository.UpdateStack(stack);
+                var stackDb = _stackRepository.FindStack(stack.StackId);
+                if (stackDb == null)
+                {
+                    throw new Exception("Stack not found!!");
+                }
+                _stackRepository.UpdateStack(stackDb, stack);
             }
             catch (Exception ex)
             {
@@ -59,7 +64,12 @@ namespace FlashcardsAPI.Services
         {
             try
             {
-                _stackRepository.DeleteStack(stackId);
+                var stackDb = _stackRepository.FindStack(stackId);
+                if (stackDb == null)
+                {
+                    throw new Exception("Stack not found!!");
+                }
+                _stackRepository.DeleteStack(stackDb);
             }
             catch (Exception ex)
             {

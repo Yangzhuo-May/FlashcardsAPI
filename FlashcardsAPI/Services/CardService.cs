@@ -1,4 +1,5 @@
-﻿using FlashcardsAPI.Models;
+﻿using FlashcardsAPI.Dtos;
+using FlashcardsAPI.Models;
 using FlashcardsAPI.Repository;
 
 namespace FlashcardsAPI.Services
@@ -15,7 +16,7 @@ namespace FlashcardsAPI.Services
         {
             try
             {
-                _cardRepository.InsertQuestion(card);
+                _cardRepository.InsertCard(card);
             }
             catch (Exception ex)
             {
@@ -23,16 +24,16 @@ namespace FlashcardsAPI.Services
             }
         }
 
-        public void EditCard(int id, Card card)
+        public void EditCard(int id, CardDto card)
         {
             try
             {
-                var questionDb = _cardRepository.FindQuestion(id);
-                if (questionDb == null)
+                var cardDb = _cardRepository.FindCard(id);
+                if (cardDb == null)
                 {
-                    throw new Exception("Question not found!!");
+                    throw new Exception("Card not found!!");
                 }
-                _cardRepository.UpdateQuestion(id, card);
+                _cardRepository.UpdateCard(cardDb, card);
             }
             catch (Exception ex)
             {
@@ -44,12 +45,12 @@ namespace FlashcardsAPI.Services
         {
             try
             {
-                var questionDb = _cardRepository.FindQuestion(id);
-                if (questionDb == null)
+                var cardDb = _cardRepository.FindCard(id);
+                if (cardDb == null)
                 {
-                    throw new Exception("Question not found!!");
+                    throw new Exception("Card not found!!");
                 }
-                _cardRepository.DeleteQuestion(id);
+                _cardRepository.DeleteCard(cardDb);
             }
             catch (Exception ex)
             {
