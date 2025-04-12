@@ -153,6 +153,7 @@ C:\Users\29351\Desktop\FlashcardsAPI\FlashcardsAPI\obj\Debug\net8.0\FlashcardsAP
 C:\Users\29351\Desktop\FlashcardsAPI\FlashcardsAPI\obj\Debug\net8.0\FlashcardsAPI.csproj.CoreCompileInputs.cache
 C:\Users\29351\Desktop\FlashcardsAPI\FlashcardsAPI\obj\Debug\net8.0\FlashcardsAPI.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\29351\Desktop\FlashcardsAPI\FlashcardsAPI\obj\Debug\net8.0\FlashcardsAPI.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\29351\Desktop\FlashcardsAPI\FlashcardsAPI\obj\Debug\net8.0\FlashcardsAPI.sourcelink.json
 C:\Users\29351\Desktop\FlashcardsAPI\FlashcardsAPI\obj\Debug\net8.0\scopedcss\bundle\FlashcardsAPI.styles.css
 C:\Users\29351\Desktop\FlashcardsAPI\FlashcardsAPI\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\29351\Desktop\FlashcardsAPI\FlashcardsAPI\obj\Debug\net8.0\staticwebassets.development.json
@@ -169,4 +170,3 @@ C:\Users\29351\Desktop\FlashcardsAPI\FlashcardsAPI\obj\Debug\net8.0\refint\Flash
 C:\Users\29351\Desktop\FlashcardsAPI\FlashcardsAPI\obj\Debug\net8.0\FlashcardsAPI.pdb
 C:\Users\29351\Desktop\FlashcardsAPI\FlashcardsAPI\obj\Debug\net8.0\FlashcardsAPI.genruntimeconfig.cache
 C:\Users\29351\Desktop\FlashcardsAPI\FlashcardsAPI\obj\Debug\net8.0\ref\FlashcardsAPI.dll
-C:\Users\29351\Desktop\FlashcardsAPI\FlashcardsAPI\obj\Debug\net8.0\FlashcardsAPI.sourcelink.json
