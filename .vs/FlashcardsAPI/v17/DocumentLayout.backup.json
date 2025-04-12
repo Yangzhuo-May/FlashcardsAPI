@@ -3,12 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{1DF1B49C-6A19-4CC8-9187-F401982775CC}|FlashcardsAPI\\FlashcardsAPI.csproj|c:\\users\\29351\\desktop\\flashcardsapi\\flashcardsapi\\repository\\icardrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1DF1B49C-6A19-4CC8-9187-F401982775CC}|FlashcardsAPI\\FlashcardsAPI.csproj|solutionrelative:flashcardsapi\\repository\\icardrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1DF1B49C-6A19-4CC8-9187-F401982775CC}|FlashcardsAPI\\FlashcardsAPI.csproj|c:\\users\\29351\\desktop\\flashcardsapi\\flashcardsapi\\repository\\istackrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1DF1B49C-6A19-4CC8-9187-F401982775CC}|FlashcardsAPI\\FlashcardsAPI.csproj|solutionrelative:flashcardsapi\\repository\\istackrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1DF1B49C-6A19-4CC8-9187-F401982775CC}|FlashcardsAPI\\FlashcardsAPI.csproj|c:\\users\\29351\\desktop\\flashcardsapi\\flashcardsapi\\repository\\stackrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1DF1B49C-6A19-4CC8-9187-F401982775CC}|FlashcardsAPI\\FlashcardsAPI.csproj|solutionrelative:flashcardsapi\\repository\\stackrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{1DF1B49C-6A19-4CC8-9187-F401982775CC}|FlashcardsAPI\\FlashcardsAPI.csproj|c:\\users\\29351\\desktop\\flashcardsapi\\flashcardsapi\\repository\\cardrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1DF1B49C-6A19-4CC8-9187-F401982775CC}|FlashcardsAPI\\FlashcardsAPI.csproj|solutionrelative:flashcardsapi\\repository\\cardrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1DF1B49C-6A19-4CC8-9187-F401982775CC}|FlashcardsAPI\\FlashcardsAPI.csproj|c:\\users\\29351\\desktop\\flashcardsapi\\flashcardsapi\\repository\\icardrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1DF1B49C-6A19-4CC8-9187-F401982775CC}|FlashcardsAPI\\FlashcardsAPI.csproj|solutionrelative:flashcardsapi\\repository\\icardrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1DF1B49C-6A19-4CC8-9187-F401982775CC}|FlashcardsAPI\\FlashcardsAPI.csproj|c:\\users\\29351\\desktop\\flashcardsapi\\flashcardsapi\\models\\card.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1DF1B49C-6A19-4CC8-9187-F401982775CC}|FlashcardsAPI\\FlashcardsAPI.csproj|solutionrelative:flashcardsapi\\models\\card.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1DF1B49C-6A19-4CC8-9187-F401982775CC}|FlashcardsAPI\\FlashcardsAPI.csproj|c:\\users\\29351\\desktop\\flashcardsapi\\flashcardsapi\\services\\cardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -27,20 +39,8 @@
       "RelativeMoniker": "D:0:0:{1DF1B49C-6A19-4CC8-9187-F401982775CC}|FlashcardsAPI\\FlashcardsAPI.csproj|solutionrelative:flashcardsapi\\dtos\\carddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1DF1B49C-6A19-4CC8-9187-F401982775CC}|FlashcardsAPI\\FlashcardsAPI.csproj|c:\\users\\29351\\desktop\\flashcardsapi\\flashcardsapi\\models\\card.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1DF1B49C-6A19-4CC8-9187-F401982775CC}|FlashcardsAPI\\FlashcardsAPI.csproj|solutionrelative:flashcardsapi\\models\\card.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1DF1B49C-6A19-4CC8-9187-F401982775CC}|FlashcardsAPI\\FlashcardsAPI.csproj|c:\\users\\29351\\desktop\\flashcardsapi\\flashcardsapi\\repository\\stackrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1DF1B49C-6A19-4CC8-9187-F401982775CC}|FlashcardsAPI\\FlashcardsAPI.csproj|solutionrelative:flashcardsapi\\repository\\stackrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{1DF1B49C-6A19-4CC8-9187-F401982775CC}|FlashcardsAPI\\FlashcardsAPI.csproj|c:\\users\\29351\\desktop\\flashcardsapi\\flashcardsapi\\models\\stack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1DF1B49C-6A19-4CC8-9187-F401982775CC}|FlashcardsAPI\\FlashcardsAPI.csproj|solutionrelative:flashcardsapi\\models\\stack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1DF1B49C-6A19-4CC8-9187-F401982775CC}|FlashcardsAPI\\FlashcardsAPI.csproj|c:\\users\\29351\\desktop\\flashcardsapi\\flashcardsapi\\repository\\istackrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1DF1B49C-6A19-4CC8-9187-F401982775CC}|FlashcardsAPI\\FlashcardsAPI.csproj|solutionrelative:flashcardsapi\\repository\\istackrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1DF1B49C-6A19-4CC8-9187-F401982775CC}|FlashcardsAPI\\FlashcardsAPI.csproj|c:\\users\\29351\\desktop\\flashcardsapi\\flashcardsapi\\services\\stackservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -63,12 +63,12 @@
           ]
         },
         {
-          "DockedWidth": 217,
-          "SelectedChildIndex": 0,
+          "DockedWidth": 240,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 4,
               "Title": "Card.cs",
               "DocumentMoniker": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FlashcardsAPI\\Models\\Card.cs",
               "RelativeDocumentMoniker": "FlashcardsAPI\\Models\\Card.cs",
@@ -81,7 +81,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "Stack.cs",
               "DocumentMoniker": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FlashcardsAPI\\Models\\Stack.cs",
               "RelativeDocumentMoniker": "FlashcardsAPI\\Models\\Stack.cs",
@@ -89,18 +89,17 @@
               "RelativeToolTip": "FlashcardsAPI\\Models\\Stack.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-12T15:13:05.249Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-12T15:13:05.249Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 1,
               "Title": "IStackRepository.cs",
               "DocumentMoniker": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FlashcardsAPI\\Repository\\IStackRepository.cs",
               "RelativeDocumentMoniker": "FlashcardsAPI\\Repository\\IStackRepository.cs",
               "ToolTip": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FlashcardsAPI\\Repository\\IStackRepository.cs",
               "RelativeToolTip": "FlashcardsAPI\\Repository\\IStackRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAABAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-12T15:12:45.281Z",
               "EditorCaption": ""
@@ -115,31 +114,30 @@
               "RelativeToolTip": "FlashcardsAPI\\Services\\StackService.cs",
               "ViewState": "AgIAADEAAAAAAAAAAAAkwEcAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-12T14:54:02.044Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-12T14:54:02.044Z"
             }
           ]
         },
         {
-          "DockedWidth": 236,
+          "DockedWidth": 213,
           "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ICardRepository.cs",
-              "DocumentMoniker": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FlashcardsAPI\\Repository\\ICardRepository.cs",
-              "RelativeDocumentMoniker": "FlashcardsAPI\\Repository\\ICardRepository.cs",
-              "ToolTip": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FlashcardsAPI\\Repository\\ICardRepository.cs",
-              "RelativeToolTip": "FlashcardsAPI\\Repository\\ICardRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAyAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "CardRepository.cs",
+              "DocumentMoniker": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FlashcardsAPI\\Repository\\CardRepository.cs",
+              "RelativeDocumentMoniker": "FlashcardsAPI\\Repository\\CardRepository.cs",
+              "ToolTip": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FlashcardsAPI\\Repository\\CardRepository.cs",
+              "RelativeToolTip": "FlashcardsAPI\\Repository\\CardRepository.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAQwBUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-12T16:21:37.039Z",
+              "WhenOpened": "2025-04-04T21:12:35.439Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "ICardService.cs",
               "DocumentMoniker": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FlashcardsAPI\\Services\\ICardService.cs",
               "RelativeDocumentMoniker": "FlashcardsAPI\\Services\\ICardService.cs",
@@ -147,12 +145,37 @@
               "RelativeToolTip": "FlashcardsAPI\\Services\\ICardService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-12T16:20:58.539Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-12T16:20:58.539Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "StackRepository.cs",
+              "DocumentMoniker": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FlashcardsAPI\\Repository\\StackRepository.cs",
+              "RelativeDocumentMoniker": "FlashcardsAPI\\Repository\\StackRepository.cs",
+              "ToolTip": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FlashcardsAPI\\Repository\\StackRepository.cs",
+              "RelativeToolTip": "FlashcardsAPI\\Repository\\StackRepository.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAQwB0AAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-05T19:25:50.691Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ICardRepository.cs",
+              "DocumentMoniker": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FlashcardsAPI\\Repository\\ICardRepository.cs",
+              "RelativeDocumentMoniker": "FlashcardsAPI\\Repository\\ICardRepository.cs",
+              "ToolTip": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FlashcardsAPI\\Repository\\ICardRepository.cs",
+              "RelativeToolTip": "FlashcardsAPI\\Repository\\ICardRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-12T16:21:37.039Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "CardService.cs",
               "DocumentMoniker": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FlashcardsAPI\\Services\\CardService.cs",
               "RelativeDocumentMoniker": "FlashcardsAPI\\Services\\CardService.cs",
@@ -160,25 +183,11 @@
               "RelativeToolTip": "FlashcardsAPI\\Services\\CardService.cs",
               "ViewState": "AgIAABYAAAAAAAAAAAAqwBoAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-12T14:54:00.665Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-12T14:54:00.665Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "CardRepository.cs",
-              "DocumentMoniker": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FlashcardsAPI\\Repository\\CardRepository.cs",
-              "RelativeDocumentMoniker": "FlashcardsAPI\\Repository\\CardRepository.cs",
-              "ToolTip": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FlashcardsAPI\\Repository\\CardRepository.cs",
-              "RelativeToolTip": "FlashcardsAPI\\Repository\\CardRepository.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAQwBcAAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-04T21:12:35.439Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "CardController.cs",
               "DocumentMoniker": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FlashcardsAPI\\Controllers\\CardController.cs",
               "RelativeDocumentMoniker": "FlashcardsAPI\\Controllers\\CardController.cs",
@@ -186,12 +195,11 @@
               "RelativeToolTip": "FlashcardsAPI\\Controllers\\CardController.cs",
               "ViewState": "AgIAADUAAAAAAAAAAAAkwD0AAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-12T15:21:49.324Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-12T15:21:49.324Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "CardDto.cs",
               "DocumentMoniker": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FlashcardsAPI\\Dtos\\CardDto.cs",
               "RelativeDocumentMoniker": "FlashcardsAPI\\Dtos\\CardDto.cs",
@@ -199,21 +207,7 @@
               "RelativeToolTip": "FlashcardsAPI\\Dtos\\CardDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-12T16:17:18.953Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "StackRepository.cs",
-              "DocumentMoniker": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FlashcardsAPI\\Repository\\StackRepository.cs",
-              "RelativeDocumentMoniker": "FlashcardsAPI\\Repository\\StackRepository.cs",
-              "ToolTip": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FlashcardsAPI\\Repository\\StackRepository.cs",
-              "RelativeToolTip": "FlashcardsAPI\\Repository\\StackRepository.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAQwBgAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-05T19:25:50.691Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-12T16:17:18.953Z"
             }
           ]
         }

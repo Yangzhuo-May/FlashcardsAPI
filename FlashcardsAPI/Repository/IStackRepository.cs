@@ -7,7 +7,7 @@ namespace FlashcardsAPI.Repository
         void InsertStack(Stack stack);
         void UpdateStack(Stack stackToUpdate, Stack updatedStack);
         void DeleteStack(Stack stack);
-        Stack FindStack(int id);
+        Stack? FindStack(int id);
         List<Stack> GetAllStacks();
     }
 }
