@@ -18,8 +18,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "question",
-        "Type": "FlashcardsAPI.Models.Question",
+        "Name": "card",
+        "Type": "FlashcardsAPI.Models.Card",
         "IsRequired": true
       }
     ],
@@ -34,13 +34,13 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "question",
-        "Type": "FlashcardsAPI.Models.Question",
+        "Name": "id",
+        "Type": "System.Int32",
         "IsRequired": true
       },
       {
-        "Name": "id",
-        "Type": "",
+        "Name": "card",
+        "Type": "FlashcardsAPI.Models.Card",
         "IsRequired": true
       }
     ],

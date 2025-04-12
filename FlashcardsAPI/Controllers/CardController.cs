@@ -1,4 +1,5 @@
 ﻿using FlashcardsAPI.Models;
+using FlashcardsAPI.Dtos;
 using FlashcardsAPI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
@@ -58,7 +59,7 @@ namespace FlashcardsAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult EditCard(int id, Card card)
+        public IActionResult EditCard(int id, CardDto card)
         {
             try
             {

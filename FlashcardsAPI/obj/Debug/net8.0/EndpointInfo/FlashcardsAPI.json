@@ -24,17 +24,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Question"
+                "$ref": "#/components/schemas/Card"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Question"
+                "$ref": "#/components/schemas/Card"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Question"
+                "$ref": "#/components/schemas/Card"
               }
             }
           }
@@ -80,7 +80,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "format": "int32"
             }
           }
         ],
@@ -88,17 +89,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Question"
+                "$ref": "#/components/schemas/Card"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Question"
+                "$ref": "#/components/schemas/Card"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Question"
+                "$ref": "#/components/schemas/Card"
               }
             }
           }
@@ -278,14 +279,20 @@
   },
   "components": {
     "schemas": {
-      "Question": {
+      "Card": {
+        "required": [
+          "answers",
+          "correctAnswer",
+          "question",
+          "stackId"
+        ],
         "type": "object",
         "properties": {
           "cardId": {
             "type": "integer",
             "format": "int32"
           },
-          "problem": {
+          "question": {
             "type": "string",
             "nullable": true
           },
@@ -308,6 +315,9 @@
         "additionalProperties": false
       },
       "Stack": {
+        "required": [
+          "stackName"
+        ],
         "type": "object",
         "properties": {
           "stackId": {

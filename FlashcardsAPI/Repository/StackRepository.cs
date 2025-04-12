@@ -20,30 +20,21 @@ namespace FlashcardsAPI.Repository
             _context.SaveChanges();
         }
 
-        public void UpdateStack(Stack stack)
+        public void UpdateStack(Stack stackToUpdate, Stack updatedStack)
         {
-            var stackDb = FindStack(stack.StackId);
-            if (stackDb != null)
-            {
-                stackDb.StackName = stack.StackName;
-                _context.SaveChanges();
-            }
+            stackToUpdate.StackName = updatedStack.StackName;
+            _context.SaveChanges();
         }
 
-        public void DeleteStack(int stackId)
-        {
-            var stackDb = FindStack(stackId);
-            if (stackDb != null)
-            {
-                _context.Remove(stackDb);
-                _context.SaveChanges();
-            }
+        public void DeleteStack(Stack stack)
+        { 
+            _context.Remove(stack);
+            _context.SaveChanges();
         }
 
-        public Stack FindStack(int stackId)
+        public Stack? FindStack(int stackId)
         {
-            Stack stackDb;
-            return stackDb = _context.Stacks.Find(stackId);
+            return _context.Stacks.Find(stackId) ?? null;
         }
 
         public List<Stack> GetAllStacks()
