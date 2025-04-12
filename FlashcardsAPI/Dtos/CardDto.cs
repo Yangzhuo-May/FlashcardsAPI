@@ -2,8 +2,8 @@
 {
     public class CardDto
     {
-        public string Question { get; set; }
-        public string[] Answers { get; set; }
-        public string CorrectAnswer { get; set; }
+        public required string Question { get; set; }
+        public required  string[] Answers { get; set; }
+        public required string CorrectAnswer { get; set; }
     }
 }
