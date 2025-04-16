@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{1DF1B49C-6A19-4CC8-9187-F401982775CC}|FlashcardsAPI\\FlashcardsAPI.csproj|c:\\users\\29351\\desktop\\flashcardsapi\\flashcardsapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1DF1B49C-6A19-4CC8-9187-F401982775CC}|FlashcardsAPI\\FlashcardsAPI.csproj|solutionrelative:flashcardsapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1DF1B49C-6A19-4CC8-9187-F401982775CC}|FlashcardsAPI\\FlashcardsAPI.csproj|c:\\users\\29351\\desktop\\flashcardsapi\\flashcardsapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{1DF1B49C-6A19-4CC8-9187-F401982775CC}|FlashcardsAPI\\FlashcardsAPI.csproj|solutionrelative:flashcardsapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{1DF1B49C-6A19-4CC8-9187-F401982775CC}|FlashcardsAPI\\FlashcardsAPI.csproj|c:\\users\\29351\\desktop\\flashcardsapi\\flashcardsapi\\repository\\istackrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1DF1B49C-6A19-4CC8-9187-F401982775CC}|FlashcardsAPI\\FlashcardsAPI.csproj|solutionrelative:flashcardsapi\\repository\\istackrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -36,11 +44,36 @@
         },
         {
           "DockedWidth": 240,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FlashcardsAPI\\appsettings.json",
+              "RelativeDocumentMoniker": "FlashcardsAPI\\appsettings.json",
+              "ToolTip": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FlashcardsAPI\\appsettings.json",
+              "RelativeToolTip": "FlashcardsAPI\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAgAQAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-04-13T10:28:24.537Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FlashcardsAPI\\Program.cs",
+              "RelativeDocumentMoniker": "FlashcardsAPI\\Program.cs",
+              "ToolTip": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FlashcardsAPI\\Program.cs",
+              "RelativeToolTip": "FlashcardsAPI\\Program.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAAACoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-12T17:50:18.798Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "Card.cs",
               "DocumentMoniker": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FlashcardsAPI\\Models\\Card.cs",
               "RelativeDocumentMoniker": "FlashcardsAPI\\Models\\Card.cs",
@@ -52,7 +85,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "Stack.cs",
               "DocumentMoniker": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FlashcardsAPI\\Models\\Stack.cs",
               "RelativeDocumentMoniker": "FlashcardsAPI\\Models\\Stack.cs",
@@ -64,20 +97,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "IStackRepository.cs",
               "DocumentMoniker": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FlashcardsAPI\\Repository\\IStackRepository.cs",
               "RelativeDocumentMoniker": "FlashcardsAPI\\Repository\\IStackRepository.cs",
               "ToolTip": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FlashcardsAPI\\Repository\\IStackRepository.cs",
               "RelativeToolTip": "FlashcardsAPI\\Repository\\IStackRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAjAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-12T15:12:45.281Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-12T15:12:45.281Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "StackService.cs",
               "DocumentMoniker": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FlashcardsAPI\\Services\\StackService.cs",
               "RelativeDocumentMoniker": "FlashcardsAPI\\Services\\StackService.cs",
