@@ -7,8 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowLocalhost",
-        builder => builder.WithOrigins("http://localhost:4200")
+    options.AddPolicy("AllowLocalhostAndAzureApp",
+        builder => builder.WithOrigins("http://localhost:4200", "https://blue-mud-05f012700.6.azurestaticapps.net")
                           .AllowAnyMethod()
                           .AllowAnyHeader());
 });
@@ -32,14 +32,14 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-app.UseSwagger();
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment() || app.Environment.IsStaging() || app.Environment.IsProduction())
 {
+    app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-app.UseCors("AllowLocalhost");
+app.UseCors("AllowLocalhostAndAzureApp");
 
 app.UseHttpsRedirection();
 
