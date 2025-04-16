@@ -3,6 +3,8 @@ using FlashcardsAPI.Dtos;
 using FlashcardsAPI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace FlashcardsAPI.Controllers
 {
@@ -10,9 +12,11 @@ namespace FlashcardsAPI.Controllers
     [ApiController]
     public class CardController : ControllerBase
     {
+        private readonly ILogger<CardController> _logger;
         private readonly ICardService _cardService;
-        public CardController(ICardService questionService)
+        public CardController(ILogger<CardController> logger, ICardService questionService)
         {
+            _logger = logger;
             _cardService = questionService;
         }
 
@@ -45,15 +49,21 @@ namespace FlashcardsAPI.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddCard(Card card)
+        public IActionResult AddCard([FromBody] Card card)
         {
+            _logger.LogInformation("Received request to create a new card with the following data: {CardData}", card);
+
             try
             {
                 _cardService.AddCard(card);
+
+                _logger.LogInformation("Successfully created a new card: {CreatedCardData}", card);
+
                 return Ok(new { message = "Card added successfully" });
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, "Error occurred while creating a new card.");
                 return new BadRequestObjectResult(ex.Message);
             }
         }
