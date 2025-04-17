@@ -40,7 +40,7 @@
       },
       {
         "Name": "card",
-        "Type": "FlashcardsAPI.Models.Card",
+        "Type": "FlashcardsAPI.Dtos.CardDto",
         "IsRequired": true
       }
     ],
