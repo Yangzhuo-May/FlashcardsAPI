@@ -35,6 +35,11 @@ builder.Services.AddScoped<IStackService, StackService>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddAuthorization();
+
+builder.Services.AddIdentityApiEndpoints<IdentityUser>()
+    .AddEntityFrameworkStores<ApplicationDbContext>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -48,7 +53,11 @@ app.UseCors("AllowLocalhostAndAzureApp");
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
+
 app.UseAuthorization();
+
+app.MapIdentityApi<IdentityUser>();
 
 app.MapControllers();
 
