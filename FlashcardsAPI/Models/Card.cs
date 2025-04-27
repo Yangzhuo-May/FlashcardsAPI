@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore.Query.Internal;
 
 namespace FlashcardsAPI.Models
 {
@@ -11,5 +12,8 @@ namespace FlashcardsAPI.Models
         public required string[] Answers { get; set; }
         public required string CorrectAnswer { get; set; }
         public required int StackId { get; set; }
+        public required int UserId { get; set; }
+        public User User { get; set; }
+        public Stack Stack { get; set; }
     }
 }

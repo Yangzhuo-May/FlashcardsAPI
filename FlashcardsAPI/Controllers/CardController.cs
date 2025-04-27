@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http.HttpResults;
+using System.Security.Claims;
 
 namespace FlashcardsAPI.Controllers
 {
@@ -49,13 +50,31 @@ namespace FlashcardsAPI.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddCard([FromBody] Card card)
+        public IActionResult AddCard([FromBody] CardDto card)
         {
-            _logger.LogInformation("Received request to create a new card with the following data: {CardData}", card);
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
+            if (userIdClaim == null)
+            {
+                Console.WriteLine("⚠️ User ID is null");
+                return BadRequest("User ID is missing.");
+            }
 
+            var userIdString = userIdClaim.Value;
+
+            var userId = int.Parse(userIdString);
+
+            if (card == null)
+            {
+                Console.WriteLine("⚠️ card is NULL");
+                return BadRequest("Invalid input data.");
+            }
+
+            Console.WriteLine($"✅ Received card: {card.Question}, StackId: {card.StackId}");
+
+            _logger.LogInformation("Received request to create a new card with the following data: {CardData}", card);
             try
             {
-                _cardService.AddCard(card);
+                _cardService.AddCard(card, userId);
 
                 _logger.LogInformation("Successfully created a new card: {CreatedCardData}", card);
 

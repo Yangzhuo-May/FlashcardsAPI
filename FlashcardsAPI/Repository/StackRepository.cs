@@ -2,15 +2,19 @@
 using FlashcardsAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query.Internal;
+using Microsoft.Extensions.Logging;
+using FlashcardsAPI.Controllers;
 
 namespace FlashcardsAPI.Repository
 {
     public class StackRepository : IStackRepository
     {
         private readonly ApplicationDbContext _context;
+        private readonly ILogger<CardController> _logger;
 
-        public StackRepository(ApplicationDbContext context)
+        public StackRepository(ILogger<CardController> logger, ApplicationDbContext context)
         {
+            _logger = logger;
             _context = context;
         }
 
@@ -34,6 +38,8 @@ namespace FlashcardsAPI.Repository
 
         public Stack? FindStack(int stackId)
         {
+            _logger.LogInformation("🔍Executing FindStack for StackId: {StackId}", stackId);
+            Console.WriteLine($"🔍Executing FindStack with StackId: {stackId}");
             return _context.Stacks.Find(stackId) ?? null;
         }
 

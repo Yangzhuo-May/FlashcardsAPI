@@ -1,4 +1,5 @@
-﻿using FlashcardsAPI.Dtos;
+﻿using System;
+using FlashcardsAPI.Dtos;
 using FlashcardsAPI.Models;
 using FlashcardsAPI.Repository;
 
@@ -7,16 +8,42 @@ namespace FlashcardsAPI.Services
     public class CardService : ICardService
     {
         private readonly ICardRepository _cardRepository;
-        public CardService(ICardRepository cardRepository)
+        private readonly IStackRepository _stackRepository;
+
+        public CardService(ICardRepository cardRepository, IStackRepository stackRepository)
         {
+            _stackRepository = stackRepository;
             _cardRepository = cardRepository;
         }
 
-        public void AddCard(Card card)
+        public void AddCard(CardDto card, int userId)
         {
             try
             {
-                _cardRepository.InsertCard(card);
+                Console.WriteLine($"🔍 Calling FindStack with StackId: {card.StackId}");
+
+                var stack = _stackRepository.FindStack(card.StackId);
+
+                if (stack == null)
+                {
+                    Console.WriteLine($"❌ Stack not found for StackId: {card.StackId}");
+                    throw new Exception($"Stack with ID {card.StackId} not found.");
+                }
+
+                Console.WriteLine($"✅ Found stack: {stack.StackName}, StackId: {stack.StackId}");
+
+                Card newCard = new Card
+                {
+                    UserId = userId,
+                    Question = card.Question,
+                    Answers = card.Answers,
+                    CorrectAnswer = card.CorrectAnswer,
+                    StackId = card.StackId,
+                    Stack = stack
+                };
+
+                _cardRepository.InsertCard(newCard);
+                
             }
             catch (Exception ex)
             {

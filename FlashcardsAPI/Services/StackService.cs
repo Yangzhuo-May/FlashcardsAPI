@@ -1,15 +1,19 @@
-﻿using FlashcardsAPI.Models;
+﻿using FlashcardsAPI.Controllers;
+using FlashcardsAPI.Models;
 using FlashcardsAPI.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace FlashcardsAPI.Services
 {
     public class StackService : IStackService
     {
+        private readonly ILogger<CardController> _logger;
         private readonly IStackRepository _stackRepository;
-        public StackService(IStackRepository stackRepository)
+        public StackService(ILogger<CardController> logger, IStackRepository stackRepository)
         {
+            _logger = logger;
             _stackRepository = stackRepository;
         }
 

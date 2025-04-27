@@ -26,8 +26,8 @@ namespace FlashcardsAPI.Repository
             cardToUpdate.Question = updatedCard.Question;
             cardToUpdate.Answers = updatedCard.Answers;
             cardToUpdate.CorrectAnswer = updatedCard.CorrectAnswer;
+            cardToUpdate.StackId = updatedCard.StackId;
             _context.SaveChanges();
-            
         }
 
         public void DeleteCard(Card card)
