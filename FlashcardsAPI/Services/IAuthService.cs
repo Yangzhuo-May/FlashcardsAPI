@@ -8,7 +8,7 @@ namespace FlashcardsAPI.Services
         void AddUser(RegisterRequestDto registerRequer);
         void UpdateUser(RegisterRequestDto registerRequest);
         User FindUser(string username);
-        LoginResponseDto CheckUser(RegisterRequestDto registerRequest);
-        string GenerateJwtToken(RegisterRequestDto registerRequest);
+        LoginResponseDto CheckUser(LoginRequestDto loginRequest);
+        string GenerateJwtToken(LoginRequestDto loginRequest);
     }
 }

@@ -1,9 +1,7 @@
 ﻿using FlashcardsAPI.Controllers;
 using FlashcardsAPI.Models;
 using FlashcardsAPI.Repository;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 
 namespace FlashcardsAPI.Services
 {

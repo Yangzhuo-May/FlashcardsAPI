@@ -1,7 +1,5 @@
 ﻿using FlashcardsAPI.Models;
 using FlashcardsAPI.Data;
-using Microsoft.EntityFrameworkCore;
-using System.Security.AccessControl;
 using FlashcardsAPI.Dtos;
 
 namespace FlashcardsAPI.Repository

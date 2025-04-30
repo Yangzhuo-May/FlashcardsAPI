@@ -45,9 +45,14 @@ namespace FlashcardsAPI.Migrations
                     b.Property<int>("StackId")
                         .HasColumnType("int");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.HasKey("CardId");
 
                     b.HasIndex("StackId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Cards");
                 });
@@ -64,18 +69,23 @@ namespace FlashcardsAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.HasKey("StackId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Stacks");
                 });
 
             modelBuilder.Entity("FlashcardsAPI.Models.User", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("UserId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"));
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -92,7 +102,7 @@ namespace FlashcardsAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("UserId");
 
                     b.ToTable("Users");
                 });
@@ -105,12 +115,38 @@ namespace FlashcardsAPI.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("FlashcardsAPI.Models.User", "User")
+                        .WithMany("Cards")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.Navigation("Stack");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("FlashcardsAPI.Models.Stack", b =>
+                {
+                    b.HasOne("FlashcardsAPI.Models.User", "User")
+                        .WithMany("Stacks")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("FlashcardsAPI.Models.Stack", b =>
                 {
                     b.Navigation("Cards");
+                });
+
+            modelBuilder.Entity("FlashcardsAPI.Models.User", b =>
+                {
+                    b.Navigation("Cards");
+
+                    b.Navigation("Stacks");
                 });
 #pragma warning restore 612, 618
         }

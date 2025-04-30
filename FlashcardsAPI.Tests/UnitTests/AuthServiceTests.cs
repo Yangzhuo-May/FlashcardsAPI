@@ -1,14 +1,11 @@
 using Moq;
 using FlashcardsAPI.Repository;
-using Xunit;
-using System.Linq;
 using FlashcardsAPI.Dtos;
 using FlashcardsAPI.Services;
 using FluentValidation;
 using FluentValidation.Results;
 using Microsoft.Extensions.Logging;
 using FlashcardsAPI.Models;
-using BCrypt.Net;
 using Microsoft.Extensions.Configuration;
 
 namespace FlashcardsAPI.Tests.UnitTests

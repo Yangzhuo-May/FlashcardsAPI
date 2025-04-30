@@ -1,10 +1,6 @@
-﻿using FlashcardsAPI.Models;
-using FlashcardsAPI.Dtos;
+﻿using FlashcardsAPI.Dtos;
 using FlashcardsAPI.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
-using Microsoft.AspNetCore.Http.HttpResults;
 using System.Security.Claims;
 
 namespace FlashcardsAPI.Controllers

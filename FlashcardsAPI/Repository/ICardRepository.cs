@@ -1,5 +1,4 @@
-﻿using System;
-using FlashcardsAPI.Dtos;
+﻿using FlashcardsAPI.Dtos;
 using FlashcardsAPI.Models;
 
 namespace FlashcardsAPI.Repository

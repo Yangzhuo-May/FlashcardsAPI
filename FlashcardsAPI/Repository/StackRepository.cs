@@ -1,8 +1,5 @@
 ﻿using FlashcardsAPI.Models;
 using FlashcardsAPI.Data;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Query.Internal;
-using Microsoft.Extensions.Logging;
 using FlashcardsAPI.Controllers;
 
 namespace FlashcardsAPI.Repository

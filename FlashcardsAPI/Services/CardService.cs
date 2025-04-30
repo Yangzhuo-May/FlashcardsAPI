@@ -1,5 +1,4 @@
-﻿using System;
-using FlashcardsAPI.Dtos;
+﻿using FlashcardsAPI.Dtos;
 using FlashcardsAPI.Models;
 using FlashcardsAPI.Repository;
 
@@ -20,17 +19,12 @@ namespace FlashcardsAPI.Services
         {
             try
             {
-                Console.WriteLine($"🔍 Calling FindStack with StackId: {card.StackId}");
-
                 var stack = _stackRepository.FindStack(card.StackId);
 
                 if (stack == null)
                 {
-                    Console.WriteLine($"❌ Stack not found for StackId: {card.StackId}");
                     throw new Exception($"Stack with ID {card.StackId} not found.");
                 }
-
-                Console.WriteLine($"✅ Found stack: {stack.StackName}, StackId: {stack.StackId}");
 
                 Card newCard = new Card
                 {

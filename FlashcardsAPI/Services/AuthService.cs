@@ -68,20 +68,20 @@ namespace FlashcardsAPI.Services
              
         }
 
-        public User FindUser(string username)
+        public User FindUser(string emil)
         {
-            return _userRepository.FindUser(username);
+            return _userRepository.FindUser(emil);
         }
 
-        public LoginResponseDto CheckUser(RegisterRequestDto registerRequest)
+        public LoginResponseDto CheckUser(LoginRequestDto loginRequest)
         {
-            var userDb = FindUser(registerRequest.Username);
+            var userDb = FindUser(loginRequest.Email);
 
             if (userDb == null) return new LoginResponseDto { IsAuthenticated = false, ErrorMessage = "User does not exist." };
 
-            var token = GenerateJwtToken(registerRequest);
+            var token = GenerateJwtToken(loginRequest);
 
-            if (BCrypt.Net.BCrypt.Verify(registerRequest.Password, userDb.PasswordHash))
+            if (BCrypt.Net.BCrypt.Verify(loginRequest.Password, userDb.PasswordHash))
             {
                 return new LoginResponseDto { IsAuthenticated = true, Token = token };
             }
@@ -91,11 +91,11 @@ namespace FlashcardsAPI.Services
             }
         }
 
-        public string GenerateJwtToken(RegisterRequestDto registerRequest)
+        public string GenerateJwtToken(LoginRequestDto loginRequest)
         {
             var claims = new[]
             {
-                   new Claim(JwtRegisteredClaimNames.Sub, registerRequest.Username),
+                   new Claim(JwtRegisteredClaimNames.Sub, loginRequest.Email),
                    new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
                };
  

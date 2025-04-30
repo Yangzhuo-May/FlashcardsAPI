@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Microsoft.EntityFrameworkCore.Query.Internal;
 
 namespace FlashcardsAPI.Models
 {

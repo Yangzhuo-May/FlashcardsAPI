@@ -1,10 +1,7 @@
 ﻿using FlashcardsAPI.Models;
 using FlashcardsAPI.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
-using Azure;
-using System.Text.Json;
 
 namespace FlashcardsAPI.Controllers
 {

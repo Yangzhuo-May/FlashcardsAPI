@@ -25,9 +25,9 @@ namespace FlashcardsAPI.Repository
 
         }
 
-        public User? FindUser(string userName)
+        public User? FindUser(string email)
         {
-            return _context.Users.FirstOrDefault(u => u.Username == userName);
+            return _context.Users.FirstOrDefault(u => u.Email == email);
         }
 
         public bool EmailExists(string email)

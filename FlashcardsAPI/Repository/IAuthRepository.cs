@@ -7,7 +7,7 @@ namespace FlashcardsAPI.Repository
     {
         void InsertUser(User user);
         void UpdateUser(User userToUpdate, User updatedUser);
-        User? FindUser(string userName);
+        User? FindUser(string email);
         bool EmailExists(string email);
         bool userNameExists(string userName);
     }

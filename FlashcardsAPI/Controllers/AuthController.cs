@@ -30,11 +30,11 @@ namespace FlashcardsAPI.Controllers
         }
 
         [HttpPost("login")]
-        public IActionResult Login([FromBody] RegisterRequestDto registerRequest)
+        public IActionResult Login([FromBody] LoginRequestDto loginRequest)
         {
             try
             {
-                var response = _userService.CheckUser(registerRequest);
+                var response = _userService.CheckUser(loginRequest);
                 return Ok(new { token = response.Token });
             }
             catch (Exception ex)
