@@ -4,7 +4,7 @@ namespace FlashcardsAPI.Services
 {
     public interface IStackService
     {
-        void AddStack(Stack stack);
+        void AddStack(string stackName, int userId);
         void EditStack(Stack stack);
         void DeleteStack(int stackId);
         List<Stack> GetAllStacks();

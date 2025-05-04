@@ -1,5 +1,8 @@
-﻿using FlashcardsAPI.Models;
+﻿using System.Security.Claims;
+using FlashcardsAPI.Dtos;
+using FlashcardsAPI.Models;
 using FlashcardsAPI.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -29,12 +32,15 @@ namespace FlashcardsAPI.Controllers
             }
         }
 
+        [Authorize]
         [HttpPost]
-        public IActionResult AddStack(Stack stack)
+        public IActionResult AddStack([FromBody] AddStackRequest request)
         {
             try
             {
-                _stackService.AddStack(stack);
+                var userIdString = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                var userId = int.Parse(userIdString);
+                _stackService.AddStack(request.newStackName, userId);
                 var updatedStacks = _stackService.GetAllStacks();
                 return Ok(new { message = "Stack added successfully", stack = updatedStacks });
             }

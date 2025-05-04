@@ -32,11 +32,12 @@ namespace FlashcardsAPI.Services
             }
         }
 
-        public void AddStack(Stack stack)
+        public void AddStack(string stackName, int userId)
         {
+            Stack newStack = new Stack { StackName = stackName, UserId = userId };
             try
             { 
-                _stackRepository.InsertStack(stack); 
+                _stackRepository.InsertStack(newStack); 
             }
             catch (DbUpdateException ex)
             {

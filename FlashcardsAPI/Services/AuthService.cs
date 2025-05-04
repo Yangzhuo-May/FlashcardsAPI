@@ -87,17 +87,20 @@ namespace FlashcardsAPI.Services
             }
             else
             {
-                return new LoginResponseDto { IsAuthenticated = false, ErrorMessage = "用户不存在。" };
+                return new LoginResponseDto { IsAuthenticated = false, ErrorMessage = "User does not exist." };
             }
         }
 
         public string GenerateJwtToken(LoginRequestDto loginRequest)
         {
+            var userDb = FindUser(loginRequest.Email);
+
             var claims = new[]
             {
-                   new Claim(JwtRegisteredClaimNames.Sub, loginRequest.Email),
-                   new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
-               };
+                new Claim(ClaimTypes.NameIdentifier, userDb.UserId.ToString()),
+                new Claim(JwtRegisteredClaimNames.Sub, loginRequest.Email),
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+            };
  
             var creds = new SigningCredentials(_key, SecurityAlgorithms.HmacSha256);
 
