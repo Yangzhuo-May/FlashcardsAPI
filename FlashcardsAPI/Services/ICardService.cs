@@ -8,7 +8,7 @@ namespace FlashcardsAPI.Services
         void AddCard(CardDto card, int userId);
         void EditCard(int id, CardDto card);
         void DeleteCard(int cardId);
-        List<Card> GetAllCards();
+        List<Card> GetAllCards(int userId);
         List<Card> GetCardsByStackId(int stackId);
     }
 }

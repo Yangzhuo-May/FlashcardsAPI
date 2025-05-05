@@ -1,4 +1,5 @@
 ﻿using FlashcardsAPI.Controllers;
+using FlashcardsAPI.Dtos;
 using FlashcardsAPI.Models;
 using FlashcardsAPI.Repository;
 using Microsoft.EntityFrameworkCore;
@@ -15,11 +16,11 @@ namespace FlashcardsAPI.Services
             _stackRepository = stackRepository;
         }
 
-        public List<Stack> GetAllStacks()
+        public List<Stack> GetAllStacks(int userId)
         {
             try
             {
-                var stacks = _stackRepository.GetAllStacks();
+                var stacks = _stackRepository.GetAllStacks(userId);
                 if(stacks == null)
                 {
                     throw new Exception("No stack be found!!");
@@ -46,16 +47,16 @@ namespace FlashcardsAPI.Services
             }
         }
 
-        public void EditStack(Stack stack)
+        public void EditStack(StackRequest request)
         {
             try
             {
-                var stackDb = _stackRepository.FindStack(stack.StackId);
+                var stackDb = _stackRepository.FindStack(request.StackId);
                 if (stackDb == null)
                 {
                     throw new Exception("Stack not found!!");
                 }
-                _stackRepository.UpdateStack(stackDb, stack);
+                _stackRepository.UpdateStack(stackDb, request.NewStackName);
             }
             catch (Exception ex)
             {

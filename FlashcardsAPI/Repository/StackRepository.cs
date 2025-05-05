@@ -21,9 +21,9 @@ namespace FlashcardsAPI.Repository
             _context.SaveChanges();
         }
 
-        public void UpdateStack(Stack stackToUpdate, Stack updatedStack)
+        public void UpdateStack(Stack stackToUpdate, string updatedStack)
         {
-            stackToUpdate.StackName = updatedStack.StackName;
+            stackToUpdate.StackName = updatedStack;
             _context.SaveChanges();
         }
 
@@ -40,9 +40,9 @@ namespace FlashcardsAPI.Repository
             return _context.Stacks.Find(stackId) ?? null;
         }
 
-        public List<Stack> GetAllStacks()
+        public List<Stack> GetAllStacks(int userId)
         {
-            return _context.Stacks.ToList();
+            return _context.Stacks.Where(s => s.UserId == userId).ToList();
         }
     }
 }

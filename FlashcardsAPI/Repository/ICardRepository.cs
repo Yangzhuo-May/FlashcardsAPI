@@ -9,7 +9,7 @@ namespace FlashcardsAPI.Repository
         void UpdateCard(Card cardToUpdate, CardDto updatedCard);
         void DeleteCard(Card card);
         Card? FindCard(int cardId);
-        List<Card> GetAllCards();
+        List<Card> GetAllCards(int userId);
         List<Card> GetCardsByStackId(int stackId);
     }
 }

@@ -39,9 +39,9 @@ namespace FlashcardsAPI.Repository
             return _context.Cards.Find(cardId) ?? null;
         }
 
-        public List<Card> GetAllCards()
+        public List<Card> GetAllCards(int userId)
         {
-            return _context.Cards.ToList();
+            return _context.Cards.Where(c => c.UserId == userId).ToList();
         }
 
         public List<Card> GetCardsByStackId(int stackId)

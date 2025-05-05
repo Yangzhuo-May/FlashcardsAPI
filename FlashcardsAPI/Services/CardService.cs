@@ -79,11 +79,11 @@ namespace FlashcardsAPI.Services
             }
         }
 
-        public List<Card> GetAllCards()
+        public List<Card> GetAllCards(int userId)
         {
             try
             {
-                var cards = _cardRepository.GetAllCards();
+                var cards = _cardRepository.GetAllCards(userId);
                 if (cards == null)
                 {
                     throw new Exception("No card be found!!");

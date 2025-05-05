@@ -1,5 +1,6 @@
 ﻿using FlashcardsAPI.Dtos;
 using FlashcardsAPI.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
@@ -7,6 +8,7 @@ namespace FlashcardsAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class CardController : ControllerBase
     {
         private readonly ILogger<CardController> _logger;
@@ -22,7 +24,8 @@ namespace FlashcardsAPI.Controllers
         {
             try
             {
-                var cards = _cardService.GetAllCards();
+                var userId = validToken();
+                var cards = _cardService.GetAllCards(userId);
                 return new OkObjectResult(cards);
             }
             catch (Exception ex)
@@ -56,22 +59,12 @@ namespace FlashcardsAPI.Controllers
             }
 
             var userIdString = userIdClaim.Value;
-
             var userId = int.Parse(userIdString);
-
-            if (card == null)
-            {
-                Console.WriteLine("⚠️ card is NULL");
-                return BadRequest("Invalid input data.");
-            }
-
-            Console.WriteLine($"✅ Received card: {card.Question}, StackId: {card.StackId}");
 
             _logger.LogInformation("Received request to create a new card with the following data: {CardData}", card);
             try
             {
                 _cardService.AddCard(card, userId);
-
                 _logger.LogInformation("Successfully created a new card: {CreatedCardData}", card);
 
                 return Ok(new { message = "Card added successfully" });
@@ -109,6 +102,12 @@ namespace FlashcardsAPI.Controllers
             {
                 return new BadRequestObjectResult(ex.Message);
             }
+        }
+
+        public int validToken()
+        {
+            var userIdString = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            return int.Parse(userIdString);   
         }
     }
 }
