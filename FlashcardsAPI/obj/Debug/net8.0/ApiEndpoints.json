@@ -8,8 +8,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "registerRequest",
-        "Type": "FlashcardsAPI.Dtos.RegisterRequestDto",
+        "Name": "loginRequest",
+        "Type": "FlashcardsAPI.Dtos.LoginRequestDto",
         "IsRequired": true
       }
     ],
@@ -111,6 +111,26 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "FlashcardsAPI.Controllers.CardController",
+    "Method": "getUserInfoFromToken",
+    "RelativePath": "api/Card/userinfo",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Int32",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "FlashcardsAPI.Controllers.StackController",
     "Method": "GetAllStacks",
     "RelativePath": "api/Stack",
@@ -129,8 +149,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "stack",
-        "Type": "FlashcardsAPI.Models.Stack",
+        "Name": "request",
+        "Type": "FlashcardsAPI.Dtos.StackRequest",
         "IsRequired": true
       }
     ],
@@ -145,8 +165,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "stack",
-        "Type": "FlashcardsAPI.Models.Stack",
+        "Name": "request",
+        "Type": "FlashcardsAPI.Dtos.StackRequest",
         "IsRequired": true
       },
       {
@@ -172,6 +192,26 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FlashcardsAPI.Controllers.StackController",
+    "Method": "getUserInfoFromToken",
+    "RelativePath": "api/Stack/userinfo",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Int32",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "FlashcardsAPI.Controllers.WeatherForecastController",

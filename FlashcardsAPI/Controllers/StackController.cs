@@ -24,7 +24,7 @@ namespace FlashcardsAPI.Controllers
         {
             try
             {
-                var userId = validToken();
+                var userId = getUserInfoFromToken();
                 var stacks = _stackService.GetAllStacks(userId);
                 return new OkObjectResult(stacks);
             }
@@ -39,7 +39,7 @@ namespace FlashcardsAPI.Controllers
         {
             try
             {
-                var userId = validToken();
+                var userId = getUserInfoFromToken();
                 _stackService.AddStack(request.NewStackName, userId);
                 var updatedStacks = _stackService.GetAllStacks(userId);
                 return Ok(new { message = "Stack added successfully", stack = updatedStacks });
@@ -57,7 +57,7 @@ namespace FlashcardsAPI.Controllers
             try
             {
                 _stackService.EditStack(request);
-                var userId = validToken();
+                var userId = getUserInfoFromToken();
                 var updatedStacks = _stackService.GetAllStacks(userId);
                 return Ok(new { message = "Stack edited successfully", stack = updatedStacks });
             }
@@ -73,7 +73,7 @@ namespace FlashcardsAPI.Controllers
             try
             {
                 _stackService.DeleteStack(stackId);
-                var userId = validToken();
+                var userId = getUserInfoFromToken();
                 var updatedStacks = _stackService.GetAllStacks(userId);
                 return Ok(new { message = "Stack deleted successfully", stack = updatedStacks }); 
             }
@@ -83,7 +83,8 @@ namespace FlashcardsAPI.Controllers
             }
         }
 
-        public int validToken()
+        [HttpGet("userinfo")]
+        public int getUserInfoFromToken()
         {
             var userIdString = User.FindFirstValue(ClaimTypes.NameIdentifier);
             return int.Parse(userIdString);

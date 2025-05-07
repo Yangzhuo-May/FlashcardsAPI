@@ -24,7 +24,7 @@ namespace FlashcardsAPI.Controllers
         {
             try
             {
-                var userId = validToken();
+                var userId = getUserInfoFromToken();
                 var cards = _cardService.GetAllCards(userId);
                 return new OkObjectResult(cards);
             }
@@ -104,7 +104,8 @@ namespace FlashcardsAPI.Controllers
             }
         }
 
-        public int validToken()
+        [HttpGet("userinfo")]
+        public int getUserInfoFromToken()
         {
             var userIdString = User.FindFirstValue(ClaimTypes.NameIdentifier);
             return int.Parse(userIdString);   
