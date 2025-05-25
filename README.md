@@ -38,14 +38,5 @@ The project is built with a clean and modular structure following modern develop
 - Requirements analysis and technical planning  
 - End-to-end development process, including testing and deployment  
 
-
-## ✨ Features  
-
-- ✅ JWT-based secure login system  
-- ✅ Clean Architecture & Repository Pattern in backend  
-- ✅ Reusable, scalable frontend component system  
-- ✅ Integrated testing system  
-- ✅ Built-in logging for debugging and monitoring  
-
-📌 Conclusion
+## 📌 Conclusion
 This project not only solved my personal need for a minimalist flashcard tool, but also helped me gain practical experience across the full development workflow. It’s a foundation I plan to improve upon in future iterations.
