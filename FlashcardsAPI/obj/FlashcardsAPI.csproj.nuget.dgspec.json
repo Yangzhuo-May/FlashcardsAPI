@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\flashcardsAPI\\FlashcardsAPI.csproj": {}
+    "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FlashcardsAPI\\FlashcardsAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\flashcardsAPI\\FlashcardsAPI.csproj": {
+    "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FlashcardsAPI\\FlashcardsAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\flashcardsAPI\\FlashcardsAPI.csproj",
+        "projectUniqueName": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FlashcardsAPI\\FlashcardsAPI.csproj",
         "projectName": "FlashcardsAPI",
-        "projectPath": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\flashcardsAPI\\FlashcardsAPI.csproj",
+        "projectPath": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FlashcardsAPI\\FlashcardsAPI.csproj",
         "packagesPath": "C:\\Users\\29351\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\flashcardsAPI\\obj\\",
+        "outputPath": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FlashcardsAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -22,7 +22,7 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net8.0"
+          "net9.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -30,8 +30,8 @@
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net8.0": {
-            "targetAlias": "net8.0",
+          "net9.0": {
+            "targetAlias": "net9.0",
             "projectReferences": {}
           }
         },
@@ -48,8 +48,8 @@
         "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
-        "net8.0": {
-          "targetAlias": "net8.0",
+        "net9.0": {
+          "targetAlias": "net9.0",
           "dependencies": {
             "BCrypt.Net-Next": {
               "target": "Package",
@@ -69,7 +69,13 @@
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[8.0.3, )"
+              "version": "[9.0.1, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.1, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
@@ -84,6 +90,10 @@
             "Moq": {
               "target": "Package",
               "version": "[4.20.72, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[9.0.4, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -105,24 +115,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[8.0.13, 8.0.13]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[8.0.13, 8.0.13]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[8.0.13, 8.0.13]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[8.0.13, 8.0.13]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
