@@ -1,16 +1,17 @@
 ﻿using FlashcardsAPI.Models;
 using FlashcardsAPI.Data;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Query.Internal;
+using FlashcardsAPI.Controllers;
 
 namespace FlashcardsAPI.Repository
 {
     public class StackRepository : IStackRepository
     {
         private readonly ApplicationDbContext _context;
+        private readonly ILogger<CardController> _logger;
 
-        public StackRepository(ApplicationDbContext context)
+        public StackRepository(ILogger<CardController> logger, ApplicationDbContext context)
         {
+            _logger = logger;
             _context = context;
         }
 
@@ -20,9 +21,9 @@ namespace FlashcardsAPI.Repository
             _context.SaveChanges();
         }
 
-        public void UpdateStack(Stack stackToUpdate, Stack updatedStack)
+        public void UpdateStack(Stack stackToUpdate, string updatedStack)
         {
-            stackToUpdate.StackName = updatedStack.StackName;
+            stackToUpdate.StackName = updatedStack;
             _context.SaveChanges();
         }
 
@@ -34,12 +35,14 @@ namespace FlashcardsAPI.Repository
 
         public Stack? FindStack(int stackId)
         {
+            _logger.LogInformation("🔍Executing FindStack for StackId: {StackId}", stackId);
+            Console.WriteLine($"🔍Executing FindStack with StackId: {stackId}");
             return _context.Stacks.Find(stackId) ?? null;
         }
 
-        public List<Stack> GetAllStacks()
+        public List<Stack> GetAllStacks(int userId)
         {
-            return _context.Stacks.ToList();
+            return _context.Stacks.Where(s => s.UserId == userId).ToList();
         }
     }
 }

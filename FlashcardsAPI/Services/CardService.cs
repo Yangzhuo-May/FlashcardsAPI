@@ -7,16 +7,37 @@ namespace FlashcardsAPI.Services
     public class CardService : ICardService
     {
         private readonly ICardRepository _cardRepository;
-        public CardService(ICardRepository cardRepository)
+        private readonly IStackRepository _stackRepository;
+
+        public CardService(ICardRepository cardRepository, IStackRepository stackRepository)
         {
+            _stackRepository = stackRepository;
             _cardRepository = cardRepository;
         }
 
-        public void AddCard(Card card)
+        public void AddCard(CardDto card, int userId)
         {
             try
             {
-                _cardRepository.InsertCard(card);
+                var stack = _stackRepository.FindStack(card.StackId);
+
+                if (stack == null)
+                {
+                    throw new Exception($"Stack with ID {card.StackId} not found.");
+                }
+
+                Card newCard = new Card
+                {
+                    UserId = userId,
+                    Question = card.Question,
+                    Answers = card.Answers,
+                    CorrectAnswer = card.CorrectAnswer,
+                    StackId = card.StackId,
+                    Stack = stack
+                };
+
+                _cardRepository.InsertCard(newCard);
+                
             }
             catch (Exception ex)
             {
@@ -24,11 +45,43 @@ namespace FlashcardsAPI.Services
             }
         }
 
-        public void EditCard(int id, CardDto card)
+        public void AddMultiCard(BulkImportRequest request, int userId)
         {
             try
             {
-                var cardDb = _cardRepository.FindCard(id);
+                var newCards = new List<Card>();
+
+                foreach (var cardDto in request.Cards)
+                {
+                    var stack = _stackRepository.FindStack(cardDto.StackId);
+                    if (stack == null)
+                        throw new Exception($"Stack with ID {cardDto.StackId} not found.");
+
+                    newCards.Add(new Card
+                    {
+                        UserId = userId,
+                        Question = cardDto.Question,
+                        Answers = cardDto.Answers,
+                        CorrectAnswer = cardDto.CorrectAnswer,
+                        StackId = cardDto.StackId,
+                        Stack = stack
+                    });
+                }
+
+                _cardRepository.InsertCards(newCards);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public void EditCard(CardDto card)
+        {
+            try
+            {
+                var cardDb = _cardRepository.FindCard(card.CardId);
                 if (cardDb == null)
                 {
                     throw new Exception("Card not found!!");
@@ -58,11 +111,11 @@ namespace FlashcardsAPI.Services
             }
         }
 
-        public List<Card> GetAllCards()
+        public List<Card> GetAllCards(int userId)
         {
             try
             {
-                var cards = _cardRepository.GetAllCards();
+                var cards = _cardRepository.GetAllCards(userId);
                 if (cards == null)
                 {
                     throw new Exception("No card be found!!");

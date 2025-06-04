@@ -1,12 +1,13 @@
-﻿using FlashcardsAPI.Models;
+﻿using FlashcardsAPI.Dtos;
+using FlashcardsAPI.Models;
 
 namespace FlashcardsAPI.Services
 {
     public interface IStackService
     {
-        void AddStack(Stack stack);
-        void EditStack(Stack stack);
+        void AddStack(string stackName, int userId);
+        void EditStack(StackRequest request);
         void DeleteStack(int stackId);
-        List<Stack> GetAllStacks();
+        List<Stack> GetAllStacks(int userId);
     }
 }

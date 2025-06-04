@@ -1,23 +1,26 @@
-﻿using FlashcardsAPI.Models;
+﻿using FlashcardsAPI.Controllers;
+using FlashcardsAPI.Dtos;
+using FlashcardsAPI.Models;
 using FlashcardsAPI.Repository;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace FlashcardsAPI.Services
 {
     public class StackService : IStackService
     {
+        private readonly ILogger<CardController> _logger;
         private readonly IStackRepository _stackRepository;
-        public StackService(IStackRepository stackRepository)
+        public StackService(ILogger<CardController> logger, IStackRepository stackRepository)
         {
+            _logger = logger;
             _stackRepository = stackRepository;
         }
 
-        public List<Stack> GetAllStacks()
+        public List<Stack> GetAllStacks(int userId)
         {
             try
             {
-                var stacks = _stackRepository.GetAllStacks();
+                var stacks = _stackRepository.GetAllStacks(userId);
                 if(stacks == null)
                 {
                     throw new Exception("No stack be found!!");
@@ -30,11 +33,12 @@ namespace FlashcardsAPI.Services
             }
         }
 
-        public void AddStack(Stack stack)
+        public void AddStack(string stackName, int userId)
         {
+            Stack newStack = new Stack { StackName = stackName, UserId = userId };
             try
             { 
-                _stackRepository.InsertStack(stack); 
+                _stackRepository.InsertStack(newStack); 
             }
             catch (DbUpdateException ex)
             {
@@ -43,16 +47,16 @@ namespace FlashcardsAPI.Services
             }
         }
 
-        public void EditStack(Stack stack)
+        public void EditStack(StackRequest request)
         {
             try
             {
-                var stackDb = _stackRepository.FindStack(stack.StackId);
+                var stackDb = _stackRepository.FindStack(request.StackId);
                 if (stackDb == null)
                 {
                     throw new Exception("Stack not found!!");
                 }
-                _stackRepository.UpdateStack(stackDb, stack);
+                _stackRepository.UpdateStack(stackDb, request.NewStackName);
             }
             catch (Exception ex)
             {

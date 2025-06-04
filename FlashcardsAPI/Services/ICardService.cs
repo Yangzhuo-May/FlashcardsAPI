@@ -5,10 +5,11 @@ namespace FlashcardsAPI.Services
 {
     public interface ICardService
     {
-        void AddCard(Card card);
-        void EditCard(int id, CardDto card);
+        void AddCard(CardDto card, int userId);
+        void AddMultiCard(BulkImportRequest request, int userId);
+        void EditCard(CardDto card);
         void DeleteCard(int cardId);
-        List<Card> GetAllCards();
+        List<Card> GetAllCards(int userId);
         List<Card> GetCardsByStackId(int stackId);
     }
 }

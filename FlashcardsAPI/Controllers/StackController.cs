@@ -1,15 +1,16 @@
-﻿using FlashcardsAPI.Models;
+﻿using System.Security.Claims;
+using FlashcardsAPI.Dtos;
+using FlashcardsAPI.Models;
 using FlashcardsAPI.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
-using Azure;
-using System.Text.Json;
 
 namespace FlashcardsAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class StackController : ControllerBase
     {
         private readonly IStackService _stackService;
@@ -23,7 +24,8 @@ namespace FlashcardsAPI.Controllers
         {
             try
             {
-                var stacks = _stackService.GetAllStacks();
+                var userId = getUserInfoFromToken();
+                var stacks = _stackService.GetAllStacks(userId);
                 return new OkObjectResult(stacks);
             }
             catch (Exception ex)
@@ -33,12 +35,13 @@ namespace FlashcardsAPI.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddStack(Stack stack)
+        public IActionResult AddStack([FromBody] StackRequest request)
         {
             try
             {
-                _stackService.AddStack(stack);
-                var updatedStacks = _stackService.GetAllStacks();
+                var userId = getUserInfoFromToken();
+                _stackService.AddStack(request.NewStackName, userId);
+                var updatedStacks = _stackService.GetAllStacks(userId);
                 return Ok(new { message = "Stack added successfully", stack = updatedStacks });
             }
             catch (DbUpdateException ex)
@@ -49,12 +52,13 @@ namespace FlashcardsAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult EditStack(Stack stack)
+        public IActionResult EditStack([FromBody] StackRequest request)
         {
             try
             {
-                _stackService.EditStack(stack);
-                var updatedStacks = _stackService.GetAllStacks();
+                _stackService.EditStack(request);
+                var userId = getUserInfoFromToken();
+                var updatedStacks = _stackService.GetAllStacks(userId);
                 return Ok(new { message = "Stack edited successfully", stack = updatedStacks });
             }
             catch (Exception ex)
@@ -69,13 +73,21 @@ namespace FlashcardsAPI.Controllers
             try
             {
                 _stackService.DeleteStack(stackId);
-                var updatedStacks = _stackService.GetAllStacks();
+                var userId = getUserInfoFromToken();
+                var updatedStacks = _stackService.GetAllStacks(userId);
                 return Ok(new { message = "Stack deleted successfully", stack = updatedStacks }); 
             }
             catch (Exception ex)
             {
                 return new BadRequestObjectResult(ex.Message);
             }
+        }
+
+        [HttpGet("userinfo")]
+        public int getUserInfoFromToken()
+        {
+            var userIdString = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            return int.Parse(userIdString);
         }
     }
 }

@@ -1,18 +1,21 @@
-﻿using FlashcardsAPI.Models;
-using FlashcardsAPI.Dtos;
+﻿using FlashcardsAPI.Dtos;
 using FlashcardsAPI.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
+using System.Security.Claims;
 
 namespace FlashcardsAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class CardController : ControllerBase
     {
+        private readonly ILogger<CardController> _logger;
         private readonly ICardService _cardService;
-        public CardController(ICardService questionService)
+        public CardController(ILogger<CardController> logger, ICardService questionService)
         {
+            _logger = logger;
             _cardService = questionService;
         }
 
@@ -21,7 +24,8 @@ namespace FlashcardsAPI.Controllers
         {
             try
             {
-                var cards = _cardService.GetAllCards();
+                var userId = getUserInfoFromToken();
+                var cards = _cardService.GetAllCards(userId);
                 return new OkObjectResult(cards);
             }
             catch (Exception ex)
@@ -44,26 +48,68 @@ namespace FlashcardsAPI.Controllers
             }
         }
 
-        [HttpPost]
-        public IActionResult AddCard(Card card)
+        [HttpPost("card")]
+        public IActionResult AddCard([FromBody] CardDto card)
         {
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
+            if (userIdClaim == null)
+            {
+                Console.WriteLine("⚠️ User ID is null");
+                return BadRequest("User ID is missing.");
+            }
+
+            var userIdString = userIdClaim.Value;
+            var userId = int.Parse(userIdString);
+
+            _logger.LogInformation("Received request to create a new card with the following data: {CardData}", card);
             try
             {
-                _cardService.AddCard(card);
+                _cardService.AddCard(card, userId);
+                _logger.LogInformation("Successfully created a new card: {CreatedCardData}", card);
+
                 return Ok(new { message = "Card added successfully" });
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, "Error occurred while creating a new card.");
+                return new BadRequestObjectResult(ex.Message);
+            }
+        }
+
+        [HttpPost("cards")]
+        public IActionResult AddCards([FromBody] BulkImportRequest request)
+        {
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
+            if (userIdClaim == null)
+            {
+                Console.WriteLine("⚠️ User ID is null");
+                return BadRequest("User ID is missing.");
+            }
+
+            var userIdString = userIdClaim.Value;
+            var userId = int.Parse(userIdString);
+
+            _logger.LogInformation("Received request to create the new card with the following data: {CardData}", request);
+            try
+            {
+                _cardService.AddMultiCard(request, userId);
+                _logger.LogInformation("Successfully created new cards: {CreatedCardData}", request);
+
+                return Ok(new { message = "Card added successfully" });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while creating a new card.");
                 return new BadRequestObjectResult(ex.Message);
             }
         }
 
         [HttpPut("{id}")]
-        public IActionResult EditCard(int id, CardDto card)
+        public IActionResult EditCard([FromBody] CardDto card)
         {
             try
             {
-                _cardService.EditCard(id, card);
+                _cardService.EditCard(card);
                 return Ok(new { message = "Card edited successfully" });
             }
             catch (Exception ex)
@@ -84,6 +130,13 @@ namespace FlashcardsAPI.Controllers
             {
                 return new BadRequestObjectResult(ex.Message);
             }
+        }
+
+        [HttpGet("userinfo")]
+        public int getUserInfoFromToken()
+        {
+            var userIdString = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            return int.Parse(userIdString);   
         }
     }
 }
