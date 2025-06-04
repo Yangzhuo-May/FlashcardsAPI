@@ -45,11 +45,43 @@ namespace FlashcardsAPI.Services
             }
         }
 
-        public void EditCard(int id, CardDto card)
+        public void AddMultiCard(BulkImportRequest request, int userId)
         {
             try
             {
-                var cardDb = _cardRepository.FindCard(id);
+                var newCards = new List<Card>();
+
+                foreach (var cardDto in request.Cards)
+                {
+                    var stack = _stackRepository.FindStack(cardDto.StackId);
+                    if (stack == null)
+                        throw new Exception($"Stack with ID {cardDto.StackId} not found.");
+
+                    newCards.Add(new Card
+                    {
+                        UserId = userId,
+                        Question = cardDto.Question,
+                        Answers = cardDto.Answers,
+                        CorrectAnswer = cardDto.CorrectAnswer,
+                        StackId = cardDto.StackId,
+                        Stack = stack
+                    });
+                }
+
+                _cardRepository.InsertCards(newCards);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public void EditCard(CardDto card)
+        {
+            try
+            {
+                var cardDb = _cardRepository.FindCard(card.CardId);
                 if (cardDb == null)
                 {
                     throw new Exception("Card not found!!");

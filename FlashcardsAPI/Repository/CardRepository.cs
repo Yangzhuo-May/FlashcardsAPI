@@ -19,6 +19,12 @@ namespace FlashcardsAPI.Repository
             _context.SaveChanges();
         }
 
+        public void InsertCards(List<Card> cards)
+        {
+            _context.Cards.AddRange(cards);
+            _context.SaveChanges();
+        }
+
         public void UpdateCard(Card cardToUpdate, CardDto updatedCard)
         {
             cardToUpdate.Question = updatedCard.Question;

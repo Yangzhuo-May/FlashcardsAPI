@@ -77,18 +77,22 @@ namespace FlashcardsAPI.Services
         {
             var userDb = FindUser(loginRequest.Email);
 
-            if (userDb == null) return new LoginResponseDto { IsAuthenticated = false, ErrorMessage = "User does not exist." };
+            if (userDb == null || !BCrypt.Net.BCrypt.Verify(loginRequest.Password, userDb.PasswordHash))
+            {
+
+                return new LoginResponseDto { 
+                    IsAuthenticated = false, 
+                    ErrorMessage = "The username or password you entered is incorrect."
+                };
+            }
 
             var token = GenerateJwtToken(loginRequest);
 
-            if (BCrypt.Net.BCrypt.Verify(loginRequest.Password, userDb.PasswordHash))
+            return new LoginResponseDto
             {
-                return new LoginResponseDto { IsAuthenticated = true, Token = token };
-            }
-            else
-            {
-                return new LoginResponseDto { IsAuthenticated = false, ErrorMessage = "User does not exist." };
-            }
+                IsAuthenticated = true,
+                Token = token
+            };
         }
 
         public string GenerateJwtToken(LoginRequestDto loginRequest)

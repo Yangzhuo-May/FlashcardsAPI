@@ -48,7 +48,7 @@ namespace FlashcardsAPI.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpPost("card")]
         public IActionResult AddCard([FromBody] CardDto card)
         {
             var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
@@ -76,12 +76,40 @@ namespace FlashcardsAPI.Controllers
             }
         }
 
+        [HttpPost("cards")]
+        public IActionResult AddCards([FromBody] BulkImportRequest request)
+        {
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
+            if (userIdClaim == null)
+            {
+                Console.WriteLine("⚠️ User ID is null");
+                return BadRequest("User ID is missing.");
+            }
+
+            var userIdString = userIdClaim.Value;
+            var userId = int.Parse(userIdString);
+
+            _logger.LogInformation("Received request to create the new card with the following data: {CardData}", request);
+            try
+            {
+                _cardService.AddMultiCard(request, userId);
+                _logger.LogInformation("Successfully created new cards: {CreatedCardData}", request);
+
+                return Ok(new { message = "Card added successfully" });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while creating a new card.");
+                return new BadRequestObjectResult(ex.Message);
+            }
+        }
+
         [HttpPut("{id}")]
-        public IActionResult EditCard(int id, CardDto card)
+        public IActionResult EditCard([FromBody] CardDto card)
         {
             try
             {
-                _cardService.EditCard(id, card);
+                _cardService.EditCard(card);
                 return Ok(new { message = "Card edited successfully" });
             }
             catch (Exception ex)

@@ -77,7 +77,32 @@
             "description": "OK"
           }
         }
-      },
+      }
+    },
+    "/api/Card/{stackId}": {
+      "get": {
+        "tags": [
+          "Card"
+        ],
+        "parameters": [
+          {
+            "name": "stackId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Card/card": {
       "post": {
         "tags": [
           "Card"
@@ -108,22 +133,30 @@
         }
       }
     },
-    "/api/Card/{stackId}": {
-      "get": {
+    "/api/Card/cards": {
+      "post": {
         "tags": [
           "Card"
         ],
-        "parameters": [
-          {
-            "name": "stackId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BulkImportRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BulkImportRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/BulkImportRequest"
+              }
             }
           }
-        ],
+        },
         "responses": {
           "200": {
             "description": "OK"
@@ -142,8 +175,7 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
             }
           }
         ],
@@ -405,15 +437,33 @@
   },
   "components": {
     "schemas": {
+      "BulkImportRequest": {
+        "type": "object",
+        "properties": {
+          "cards": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CardDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "CardDto": {
         "required": [
           "answers",
+          "cardId",
           "correctAnswer",
           "question",
           "stackId"
         ],
         "type": "object",
         "properties": {
+          "cardId": {
+            "type": "integer",
+            "format": "int32"
+          },
           "question": {
             "type": "string",
             "nullable": true

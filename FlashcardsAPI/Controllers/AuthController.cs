@@ -35,7 +35,7 @@ namespace FlashcardsAPI.Controllers
             try
             {
                 var response = _userService.CheckUser(loginRequest);
-                return Ok(new { token = response.Token });
+                return Ok(response);
             }
             catch (Exception ex)
             {
