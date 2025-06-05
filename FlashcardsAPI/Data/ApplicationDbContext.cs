@@ -35,8 +35,6 @@ namespace FlashcardsAPI.Data
                 .WithMany(u => u.Stacks)
                 .HasForeignKey(s => s.UserId)
                 .OnDelete(DeleteBehavior.Cascade);
-
-            modelBuilder.Entity<User>().ToTable("Users");
         }
     }
 }

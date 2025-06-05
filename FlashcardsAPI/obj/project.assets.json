@@ -5639,11 +5639,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FlashcardsAPI\\FlashcardsAPI.csproj",
+      "projectUniqueName": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FLashcardsAPI\\FlashcardsAPI.csproj",
       "projectName": "FlashcardsAPI",
-      "projectPath": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FlashcardsAPI\\FlashcardsAPI.csproj",
+      "projectPath": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FLashcardsAPI\\FlashcardsAPI.csproj",
       "packagesPath": "C:\\Users\\29351\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FlashcardsAPI\\obj\\",
+      "outputPath": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FLashcardsAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
