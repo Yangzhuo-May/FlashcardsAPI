@@ -48,7 +48,7 @@ namespace FlashcardsAPI.Controllers
             }
         }
 
-        [HttpPost("card")]
+        [HttpPost]
         public IActionResult AddCard([FromBody] CardDto card)
         {
             var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
@@ -76,7 +76,7 @@ namespace FlashcardsAPI.Controllers
             }
         }
 
-        [HttpPost("cards")]
+        [HttpPost("bulk")]
         public IActionResult AddCards([FromBody] BulkImportRequest request)
         {
             var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);

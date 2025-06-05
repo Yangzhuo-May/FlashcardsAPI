@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FLashcardsAPI\\FlashcardsAPI.csproj": {}
+    "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FlashcardsAPI\\FlashcardsAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FLashcardsAPI\\FlashcardsAPI.csproj": {
+    "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FlashcardsAPI\\FlashcardsAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FLashcardsAPI\\FlashcardsAPI.csproj",
+        "projectUniqueName": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FlashcardsAPI\\FlashcardsAPI.csproj",
         "projectName": "FlashcardsAPI",
-        "projectPath": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FLashcardsAPI\\FlashcardsAPI.csproj",
+        "projectPath": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FlashcardsAPI\\FlashcardsAPI.csproj",
         "packagesPath": "C:\\Users\\29351\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FLashcardsAPI\\obj\\",
+        "outputPath": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FlashcardsAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -115,6 +115,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.Net.Sdk.Compilers.Toolset",
+              "version": "[9.0.200, 9.0.200]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
