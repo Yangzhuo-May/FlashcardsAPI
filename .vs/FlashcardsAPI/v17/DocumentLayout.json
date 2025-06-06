@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{1DF1B49C-6A19-4CC8-9187-F401982775CC}|FlashcardsAPI\\FlashcardsAPI.csproj|c:\\users\\29351\\desktop\\flashcardsapi\\flashcardsapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1DF1B49C-6A19-4CC8-9187-F401982775CC}|FlashcardsAPI\\FlashcardsAPI.csproj|solutionrelative:flashcardsapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{1DF1B49C-6A19-4CC8-9187-F401982775CC}|FlashcardsAPI\\FlashcardsAPI.csproj|c:\\users\\29351\\desktop\\flashcardsapi\\flashcardsapi\\controllers\\cardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1DF1B49C-6A19-4CC8-9187-F401982775CC}|FlashcardsAPI\\FlashcardsAPI.csproj|solutionrelative:flashcardsapi\\controllers\\cardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -13,10 +17,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{1DF1B49C-6A19-4CC8-9187-F401982775CC}|FlashcardsAPI\\FlashcardsAPI.csproj|c:\\users\\29351\\desktop\\flashcardsapi\\flashcardsapi\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{1DF1B49C-6A19-4CC8-9187-F401982775CC}|FlashcardsAPI\\FlashcardsAPI.csproj|solutionrelative:flashcardsapi\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1DF1B49C-6A19-4CC8-9187-F401982775CC}|FlashcardsAPI\\FlashcardsAPI.csproj|c:\\users\\29351\\desktop\\flashcardsapi\\flashcardsapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1DF1B49C-6A19-4CC8-9187-F401982775CC}|FlashcardsAPI\\FlashcardsAPI.csproj|solutionrelative:flashcardsapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1DF1B49C-6A19-4CC8-9187-F401982775CC}|FlashcardsAPI\\FlashcardsAPI.csproj|c:\\users\\29351\\desktop\\flashcardsapi\\flashcardsapi\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -58,7 +58,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -66,28 +66,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "CardController.cs",
               "DocumentMoniker": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FlashcardsAPI\\Controllers\\CardController.cs",
               "RelativeDocumentMoniker": "FlashcardsAPI\\Controllers\\CardController.cs",
               "ToolTip": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FlashcardsAPI\\Controllers\\CardController.cs",
               "RelativeToolTip": "FlashcardsAPI\\Controllers\\CardController.cs",
-              "ViewState": "AgIAACgAAAAAAAAAAAAgwE4AAAAaAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAE4AAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-05T09:07:14.394Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "appsettings.Development.json",
-              "DocumentMoniker": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FlashcardsAPI\\appsettings.Development.json",
-              "RelativeDocumentMoniker": "FlashcardsAPI\\appsettings.Development.json",
-              "ToolTip": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FlashcardsAPI\\appsettings.Development.json",
-              "RelativeToolTip": "FlashcardsAPI\\appsettings.Development.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-06-05T08:51:38.634Z"
             },
             {
               "$type": "Document",
@@ -115,7 +103,32 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FlashcardsAPI\\Program.cs",
+              "RelativeDocumentMoniker": "FlashcardsAPI\\Program.cs",
+              "ToolTip": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FlashcardsAPI\\Program.cs",
+              "RelativeToolTip": "FlashcardsAPI\\Program.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T18:20:40.784Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FlashcardsAPI\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "FlashcardsAPI\\appsettings.Development.json",
+              "ToolTip": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FlashcardsAPI\\appsettings.Development.json",
+              "RelativeToolTip": "FlashcardsAPI\\appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-06-05T08:51:38.634Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "appsettings.Production.json",
               "DocumentMoniker": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FlashcardsAPI\\appsettings.Production.json",
               "RelativeDocumentMoniker": "FlashcardsAPI\\appsettings.Production.json",
@@ -123,8 +136,7 @@
               "RelativeToolTip": "FlashcardsAPI\\appsettings.Production.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-06-04T19:13:15.086Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-04T19:13:15.086Z"
             },
             {
               "$type": "Document",
@@ -137,18 +149,6 @@
               "ViewState": "AgIAACkAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-05T08:30:14.529Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FlashcardsAPI\\Program.cs",
-              "RelativeDocumentMoniker": "FlashcardsAPI\\Program.cs",
-              "ToolTip": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FlashcardsAPI\\Program.cs",
-              "RelativeToolTip": "FlashcardsAPI\\Program.cs",
-              "ViewState": "AgIAAFQAAAAAAAAAAAAAAGEAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-04T18:20:40.784Z"
             },
             {
               "$type": "Document",
