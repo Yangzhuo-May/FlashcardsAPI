@@ -19,7 +19,7 @@ builder.Logging.AddConsole();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowLocalhostAndAzureApp",
-        builder => builder.WithOrigins("http://localhost:4200", "https://flashcards-rho-khaki.vercel.app")
+        builder => builder.WithOrigins("http://localhost:4200", "https://flashcards-git-fea-mays-projects-c1145f24.vercel.app")
                           .AllowAnyMethod()
                           .AllowAnyHeader());
 });
