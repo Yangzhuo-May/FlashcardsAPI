@@ -127,24 +127,14 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "FlashcardsAPI.Controllers.CardController",
-    "Method": "getUserInfoFromToken",
-    "RelativePath": "api/Card/userinfo",
+    "ContainingType": "FlashcardsAPI.Controllers.FavoriteController",
+    "Method": "GetFavoriteStackList",
+    "RelativePath": "api/Favorite",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Int32",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
+    "ReturnTypes": []
   },
   {
     "ContainingType": "FlashcardsAPI.Controllers.StackController",
@@ -210,24 +200,120 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "FlashcardsAPI.Controllers.StackController",
-    "Method": "getUserInfoFromToken",
-    "RelativePath": "api/Stack/userinfo",
+    "ContainingType": "FlashcardsAPI.Controllers.StatController",
+    "Method": "GetStacksCorrectRate",
+    "RelativePath": "api/Stat/CorrectRate",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "CurrentScore",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "HighestScore",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "StackId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FlashcardsAPI.Controllers.StatController",
+    "Method": "GetStackStatsByStackId",
+    "RelativePath": "api/Stat/Stack",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "stackId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FlashcardsAPI.Controllers.StatController",
+    "Method": "AddStackStat",
+    "RelativePath": "api/Stat/Stack",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "statsDto",
+        "Type": "FlashcardsAPI.Dtos.StackLearningStatsDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FlashcardsAPI.Controllers.StatController",
+    "Method": "UpdateHighestStackScore",
+    "RelativePath": "api/Stat/Stack",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "statsDto",
+        "Type": "FlashcardsAPI.Dtos.StackLearningStatsDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FlashcardsAPI.Controllers.StatController",
+    "Method": "GetUserStatsByUserId",
+    "RelativePath": "api/Stat/User",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
-    "ReturnTypes": [
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FlashcardsAPI.Controllers.StatController",
+    "Method": "AddUserStat",
+    "RelativePath": "api/Stat/User",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
       {
-        "Type": "System.Int32",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
+        "Name": "statsDto",
+        "Type": "FlashcardsAPI.Dtos.UserLearningStatsDto",
+        "IsRequired": true
       }
-    ]
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FlashcardsAPI.Controllers.StatController",
+    "Method": "UpdateLastStudyTime",
+    "RelativePath": "api/Stat/User",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "statsDto",
+        "Type": "FlashcardsAPI.Dtos.UserLearningStatsDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "FlashcardsAPI.Controllers.WeatherForecastController",

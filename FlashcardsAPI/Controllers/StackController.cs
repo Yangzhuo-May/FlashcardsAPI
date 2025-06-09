@@ -1,5 +1,6 @@
 ﻿using System.Security.Claims;
 using FlashcardsAPI.Dtos;
+using FlashcardsAPI.Extensions;
 using FlashcardsAPI.Models;
 using FlashcardsAPI.Services;
 using Microsoft.AspNetCore.Authorization;
@@ -24,7 +25,7 @@ namespace FlashcardsAPI.Controllers
         {
             try
             {
-                var userId = getUserInfoFromToken();
+                var userId = User.GetUserId();
                 var stacks = _stackService.GetAllStacks(userId);
                 return new OkObjectResult(stacks);
             }
@@ -39,7 +40,7 @@ namespace FlashcardsAPI.Controllers
         {
             try
             {
-                var userId = getUserInfoFromToken();
+                var userId = User.GetUserId();
                 _stackService.AddStack(request.NewStackName, userId);
                 var updatedStacks = _stackService.GetAllStacks(userId);
                 return Ok(new { message = "Stack added successfully", stack = updatedStacks });
@@ -57,7 +58,7 @@ namespace FlashcardsAPI.Controllers
             try
             {
                 _stackService.EditStack(request);
-                var userId = getUserInfoFromToken();
+                var userId = User.GetUserId();
                 var updatedStacks = _stackService.GetAllStacks(userId);
                 return Ok(new { message = "Stack edited successfully", stack = updatedStacks });
             }
@@ -73,7 +74,7 @@ namespace FlashcardsAPI.Controllers
             try
             {
                 _stackService.DeleteStack(stackId);
-                var userId = getUserInfoFromToken();
+                var userId = User.GetUserId();
                 var updatedStacks = _stackService.GetAllStacks(userId);
                 return Ok(new { message = "Stack deleted successfully", stack = updatedStacks }); 
             }
@@ -81,13 +82,6 @@ namespace FlashcardsAPI.Controllers
             {
                 return new BadRequestObjectResult(ex.Message);
             }
-        }
-
-        [HttpGet("userinfo")]
-        public int getUserInfoFromToken()
-        {
-            var userIdString = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            return int.Parse(userIdString);
         }
     }
 }

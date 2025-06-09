@@ -1,4 +1,5 @@
 ﻿using FlashcardsAPI.Dtos;
+using FlashcardsAPI.Extensions;
 using FlashcardsAPI.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -24,7 +25,7 @@ namespace FlashcardsAPI.Controllers
         {
             try
             {
-                var userId = getUserInfoFromToken();
+                var userId = User.GetUserId();
                 var cards = _cardService.GetAllCards(userId);
                 return new OkObjectResult(cards);
             }
@@ -130,13 +131,6 @@ namespace FlashcardsAPI.Controllers
             {
                 return new BadRequestObjectResult(ex.Message);
             }
-        }
-
-        [HttpGet("userinfo")]
-        public int getUserInfoFromToken()
-        {
-            var userIdString = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            return int.Parse(userIdString);   
         }
     }
 }

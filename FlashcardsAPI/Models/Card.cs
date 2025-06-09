@@ -8,11 +8,8 @@ namespace FlashcardsAPI.Models
         public int CardId { get; set; }
 
         public required string Question { get; set; }
-        public required string[] Answers { get; set; }
-        public required string CorrectAnswer { get; set; }
+        public ICollection<Answer> Answers { get; set; }
         public required int StackId { get; set; }
-        public required int UserId { get; set; }
-        public User User { get; set; }
         public Stack Stack { get; set; }
     }
 }

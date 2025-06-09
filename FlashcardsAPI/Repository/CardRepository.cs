@@ -28,8 +28,11 @@ namespace FlashcardsAPI.Repository
         public void UpdateCard(Card cardToUpdate, CardDto updatedCard)
         {
             cardToUpdate.Question = updatedCard.Question;
-            cardToUpdate.Answers = updatedCard.Answers;
-            cardToUpdate.CorrectAnswer = updatedCard.CorrectAnswer;
+            cardToUpdate.Answers = updatedCard.Answers.Select(a => new Answer
+            {
+                AnswerText = a.AnswerText,
+                IsCorrect = a.IsCorrect
+            }).ToList();
             cardToUpdate.StackId = updatedCard.StackId;
             _context.SaveChanges();
         }
@@ -43,11 +46,6 @@ namespace FlashcardsAPI.Repository
         public Card? FindCard(int cardId)
         {
             return _context.Cards.Find(cardId) ?? null;
-        }
-
-        public List<Card> GetAllCards(int userId)
-        {
-            return _context.Cards.Where(c => c.UserId == userId).ToList();
         }
 
         public List<Card> GetCardsByStackId(int stackId)
