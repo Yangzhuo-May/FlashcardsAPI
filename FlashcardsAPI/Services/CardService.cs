@@ -28,10 +28,12 @@ namespace FlashcardsAPI.Services
 
                 Card newCard = new Card
                 {
-                    UserId = userId,
                     Question = card.Question,
-                    Answers = card.Answers,
-                    CorrectAnswer = card.CorrectAnswer,
+                    Answers = card.Answers.Select(a => new Answer
+                    {
+                        AnswerText = a.AnswerText,
+                        IsCorrect = a.IsCorrect
+                    }).ToList(),
                     StackId = card.StackId,
                     Stack = stack
                 };
@@ -59,10 +61,12 @@ namespace FlashcardsAPI.Services
 
                     newCards.Add(new Card
                     {
-                        UserId = userId,
                         Question = cardDto.Question,
-                        Answers = cardDto.Answers,
-                        CorrectAnswer = cardDto.CorrectAnswer,
+                        Answers = cardDto.Answers.Select(a => new Answer
+                        {
+                            AnswerText = a.AnswerText,
+                            IsCorrect = a.IsCorrect
+                        }).ToList(),
                         StackId = cardDto.StackId,
                         Stack = stack
                     });
@@ -115,7 +119,15 @@ namespace FlashcardsAPI.Services
         {
             try
             {
-                var cards = _cardRepository.GetAllCards(userId);
+                var stacks = _stackRepository.GetAllStacks(userId).ToList();
+                var cards = new List<Card>();
+
+                foreach (var item in stacks)
+                {
+                    var stackCards = _cardRepository.GetCardsByStackId(item.StackId);
+                    cards.AddRange(stackCards);
+                }
+
                 if (cards == null)
                 {
                     throw new Exception("No card be found!!");

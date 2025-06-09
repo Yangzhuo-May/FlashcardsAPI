@@ -13,6 +13,12 @@ namespace FlashcardsAPI.Data
         public DbSet<Card> Cards { get; set; }
         public DbSet<Stack> Stacks { get; set; }
         public DbSet<User> Users {  get; set; }
+        public DbSet<Answer> Answers { get; set; }
+        public DbSet<FavoriteStack> FavoriteStacks { get; set; }
+        public DbSet<UserLearningStats> UserLearningStats { get; set; }
+        public DbSet<StackLearningStats> StackLearningStats { get; set; }
+        public DbSet<AnswerRecord> AnswerRecords { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -24,17 +30,21 @@ namespace FlashcardsAPI.Data
                 .HasForeignKey(c => c.StackId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            modelBuilder.Entity<Card>()
-                .HasOne(c => c.User)
-                .WithMany(u => u.Cards)
-                .HasForeignKey(c => c.UserId)
-                .OnDelete(DeleteBehavior.Restrict); 
-
             modelBuilder.Entity<Stack>()
                 .HasOne(s => s.User)
                 .WithMany(u => u.Stacks)
                 .HasForeignKey(s => s.UserId)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Answer>()
+                .HasOne(a => a.Card)
+                .WithMany(c => c.Answers)
+                .HasForeignKey(a => a.CardId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<FavoriteStack>()
+                .HasIndex(f => new { f.UserId, f.StackId })
+                .IsUnique();
         }
     }
 }

@@ -40,6 +40,13 @@ namespace FlashcardsAPI.Repository
             return _context.Stacks.Find(stackId) ?? null;
         }
 
+        public List<Stack> FindStacksByIds(List<int> stackIds)
+        {
+            return _context.Stacks
+                .Where(s => stackIds.Contains(s.StackId))
+                .ToList();
+        }
+
         public List<Stack> GetAllStacks(int userId)
         {
             return _context.Stacks.Where(s => s.UserId == userId).ToList();

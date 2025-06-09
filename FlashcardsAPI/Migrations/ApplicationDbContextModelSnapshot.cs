@@ -22,6 +22,56 @@ namespace FlashcardsAPI.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("FlashcardsAPI.Models.Answer", b =>
+                {
+                    b.Property<int>("AnswerId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("AnswerId"));
+
+                    b.Property<string>("AnswerText")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("CardId")
+                        .HasColumnType("integer");
+
+                    b.Property<bool>("IsCorrect")
+                        .HasColumnType("boolean");
+
+                    b.HasKey("AnswerId");
+
+                    b.HasIndex("CardId");
+
+                    b.ToTable("Answers");
+                });
+
+            modelBuilder.Entity("FlashcardsAPI.Models.AnswerRecord", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("AnsweredAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<float>("CorrectRate")
+                        .HasColumnType("real");
+
+                    b.Property<int>("StackId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AnswerRecords");
+                });
+
             modelBuilder.Entity("FlashcardsAPI.Models.Card", b =>
                 {
                     b.Property<int>("CardId")
@@ -30,14 +80,6 @@ namespace FlashcardsAPI.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("CardId"));
 
-                    b.PrimitiveCollection<string[]>("Answers")
-                        .IsRequired()
-                        .HasColumnType("text[]");
-
-                    b.Property<string>("CorrectAnswer")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.Property<string>("Question")
                         .IsRequired()
                         .HasColumnType("text");
@@ -45,7 +87,7 @@ namespace FlashcardsAPI.Migrations
                     b.Property<int>("StackId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("UserId")
+                    b.Property<int?>("UserId")
                         .HasColumnType("integer");
 
                     b.HasKey("CardId");
@@ -57,6 +99,30 @@ namespace FlashcardsAPI.Migrations
                     b.ToTable("Cards");
                 });
 
+            modelBuilder.Entity("FlashcardsAPI.Models.FavoriteStack", b =>
+                {
+                    b.Property<int>("FavoriteId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("FavoriteId"));
+
+                    b.Property<int>("StackId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("FavoriteId");
+
+                    b.HasIndex("StackId");
+
+                    b.HasIndex("UserId", "StackId")
+                        .IsUnique();
+
+                    b.ToTable("FavoriteStacks");
+                });
+
             modelBuilder.Entity("FlashcardsAPI.Models.Stack", b =>
                 {
                     b.Property<int>("StackId")
@@ -64,6 +130,15 @@ namespace FlashcardsAPI.Migrations
                         .HasColumnType("integer");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("StackId"));
+
+                    b.Property<int>("FavoriteCount")
+                        .HasColumnType("integer");
+
+                    b.Property<bool>("IsProficient")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsPublic")
+                        .HasColumnType("boolean");
 
                     b.Property<string>("StackName")
                         .IsRequired()
@@ -77,6 +152,32 @@ namespace FlashcardsAPI.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Stacks");
+                });
+
+            modelBuilder.Entity("FlashcardsAPI.Models.StackLearningStats", b =>
+                {
+                    b.Property<int>("StackId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("StackId"));
+
+                    b.Property<int>("HighestSore")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("StackId1")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("StackId");
+
+                    b.HasIndex("StackId1");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("StackLearningStats");
                 });
 
             modelBuilder.Entity("FlashcardsAPI.Models.User", b =>
@@ -107,6 +208,38 @@ namespace FlashcardsAPI.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("FlashcardsAPI.Models.UserLearningStats", b =>
+                {
+                    b.Property<int>("UserId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("UserId"));
+
+                    b.Property<DateTime>("LastStudyTime")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("UserId1")
+                        .HasColumnType("integer");
+
+                    b.HasKey("UserId");
+
+                    b.HasIndex("UserId1");
+
+                    b.ToTable("UserLearningStats");
+                });
+
+            modelBuilder.Entity("FlashcardsAPI.Models.Answer", b =>
+                {
+                    b.HasOne("FlashcardsAPI.Models.Card", "Card")
+                        .WithMany("Answers")
+                        .HasForeignKey("CardId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Card");
+                });
+
             modelBuilder.Entity("FlashcardsAPI.Models.Card", b =>
                 {
                     b.HasOne("FlashcardsAPI.Models.Stack", "Stack")
@@ -115,10 +248,25 @@ namespace FlashcardsAPI.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("FlashcardsAPI.Models.User", "User")
+                    b.HasOne("FlashcardsAPI.Models.User", null)
                         .WithMany("Cards")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("Stack");
+                });
+
+            modelBuilder.Entity("FlashcardsAPI.Models.FavoriteStack", b =>
+                {
+                    b.HasOne("FlashcardsAPI.Models.Stack", "Stack")
+                        .WithMany()
+                        .HasForeignKey("StackId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FlashcardsAPI.Models.User", "User")
+                        .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Stack");
@@ -135,6 +283,41 @@ namespace FlashcardsAPI.Migrations
                         .IsRequired();
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("FlashcardsAPI.Models.StackLearningStats", b =>
+                {
+                    b.HasOne("FlashcardsAPI.Models.Stack", "Stack")
+                        .WithMany()
+                        .HasForeignKey("StackId1")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FlashcardsAPI.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Stack");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("FlashcardsAPI.Models.UserLearningStats", b =>
+                {
+                    b.HasOne("FlashcardsAPI.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId1")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("FlashcardsAPI.Models.Card", b =>
+                {
+                    b.Navigation("Answers");
                 });
 
             modelBuilder.Entity("FlashcardsAPI.Models.Stack", b =>
