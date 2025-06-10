@@ -35,6 +35,20 @@ namespace FlashcardsAPI.Controllers
             }
         }
 
+        [HttpGet("public")]
+        public IActionResult GetAllPublicStacks()
+        {
+            try
+            {
+                var stacks = _stackService.GetAllPublicStacks();
+                return new OkObjectResult(stacks);
+            }
+            catch (Exception ex)
+            {
+                return new BadRequestObjectResult(ex.Message);
+            }
+        }
+
         [HttpPost]
         public IActionResult AddStack([FromBody] StackRequest request)
         {

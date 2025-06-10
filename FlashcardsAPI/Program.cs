@@ -24,7 +24,7 @@ builder.Services.AddCors(options =>
                           .AllowAnyHeader());
 });
 
-// Add services to the container.
+builder.Services.AddScoped<DataSeeder>();
 
 builder.Services.AddControllers();
 
@@ -115,5 +115,38 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    try
+    {
+        var context = services.GetRequiredService<ApplicationDbContext>();
+        // Apply any pending migrations
+        context.Database.Migrate();
+
+        // Get seeding configuration from appsettings (e.g., appsettings.Development.json)
+        var seedingConfig = app.Configuration.GetSection("Seeding");
+        bool seedDataOnStartup = seedingConfig.GetValue<bool>("SeedDataOnStartup");
+        bool clearExistingData = seedingConfig.GetValue<bool>("ClearExistingDataBeforeSeeding");
+        int numberOfUsers = seedingConfig.GetValue<int>("NumberOfUsersToSeed");
+        int stacksPerUser = seedingConfig.GetValue<int>("StacksPerUser");
+        int cardsPerStack = seedingConfig.GetValue<int>("CardsPerStack");
+        int answersPerCard = seedingConfig.GetValue<int>("AnswersPerCard");
+
+
+        if (seedDataOnStartup)
+        {
+            var dataSeeder = services.GetRequiredService<DataSeeder>();
+            dataSeeder.SeedData(clearExistingData, numberOfUsers, stacksPerUser, cardsPerStack, answersPerCard);
+        }
+    }
+    catch (Exception ex)
+    {
+        var logger = services.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "An error occurred while applying migrations or seeding the database.");
+        // Consider more robust error handling or notifications for deployed environments
+    }
+}
 
 app.Run();

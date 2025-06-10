@@ -200,6 +200,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "FlashcardsAPI.Controllers.StackController",
+    "Method": "GetAllPublicStacks",
+    "RelativePath": "api/Stack/public",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "FlashcardsAPI.Controllers.StatController",
     "Method": "GetStacksCorrectRate",
     "RelativePath": "api/Stat/CorrectRate",

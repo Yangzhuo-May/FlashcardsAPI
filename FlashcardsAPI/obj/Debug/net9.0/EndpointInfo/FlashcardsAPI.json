@@ -277,6 +277,18 @@
         }
       }
     },
+    "/api/Stack/public": {
+      "get": {
+        "tags": [
+          "Stack"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Stack/{id}": {
       "put": {
         "tags": [

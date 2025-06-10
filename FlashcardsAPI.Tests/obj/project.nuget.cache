@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "psX2UR0K0Dk=",
+  "dgSpecHash": "wsY46b8Dm3I=",
   "success": true,
   "projectFilePath": "C:\\Users\\29351\\Desktop\\FlashcardsAPI\\FlashcardsAPI.Tests\\FlashcardsAPI.Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\29351\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\29351\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
     "C:\\Users\\29351\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
+    "C:\\Users\\29351\\.nuget\\packages\\bogus\\35.6.3\\bogus.35.6.3.nupkg.sha512",
     "C:\\Users\\29351\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
     "C:\\Users\\29351\\.nuget\\packages\\coverlet.collector\\6.0.0\\coverlet.collector.6.0.0.nupkg.sha512",
     "C:\\Users\\29351\\.nuget\\packages\\fluentvalidation\\11.5.1\\fluentvalidation.11.5.1.nupkg.sha512",
