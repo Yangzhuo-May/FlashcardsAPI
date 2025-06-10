@@ -33,6 +33,19 @@ namespace FlashcardsAPI.Services
             }
         }
 
+        public List<Stack> GetAllPublicStacks()
+        {
+            try
+            {
+                var stacks = _stackRepository.GetAllPublicStacks();
+                return stacks;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         public void AddStack(string stackName, int userId)
         {
             Stack newStack = new Stack { StackName = stackName, UserId = userId };

@@ -10,5 +10,6 @@ namespace FlashcardsAPI.Repository
         Stack? FindStack(int id);
         List<Stack> FindStacksByIds(List<int> stackIds);
         List<Stack> GetAllStacks(int userId);
+        List<Stack> GetAllPublicStacks();
     }
 }

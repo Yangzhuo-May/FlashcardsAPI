@@ -51,5 +51,10 @@ namespace FlashcardsAPI.Repository
         {
             return _context.Stacks.Where(s => s.UserId == userId).ToList();
         }
+
+        public List<Stack> GetAllPublicStacks()
+        {
+            return _context.Stacks.Where(s => s.IsPublic == true).ToList();
+        }
     }
 }

@@ -9,5 +9,6 @@ namespace FlashcardsAPI.Services
         void EditStack(StackRequest request);
         void DeleteStack(int stackId);
         List<Stack> GetAllStacks(int userId);
+        List<Stack> GetAllPublicStacks();
     }
 }
