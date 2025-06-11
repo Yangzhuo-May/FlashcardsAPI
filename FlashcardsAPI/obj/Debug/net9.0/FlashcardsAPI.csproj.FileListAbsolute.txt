@@ -170,4 +170,3 @@ C:\Users\29351\Desktop\FlashcardsAPI\FlashcardsAPI\obj\Debug\net9.0\FlashcardsAP
 C:\Users\29351\Desktop\FlashcardsAPI\FlashcardsAPI\obj\Debug\net9.0\FlashcardsAPI.genruntimeconfig.cache
 C:\Users\29351\Desktop\FlashcardsAPI\FlashcardsAPI\obj\Debug\net9.0\ref\FlashcardsAPI.dll
 C:\Users\29351\Desktop\FlashcardsAPI\FlashcardsAPI\bin\Debug\net9.0\Bogus.dll
-C:\Users\29351\Desktop\FlashcardsAPI\FlashcardsAPI\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt

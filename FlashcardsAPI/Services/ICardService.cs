@@ -9,7 +9,7 @@ namespace FlashcardsAPI.Services
         void AddMultiCard(BulkImportRequest request, int userId);
         void EditCard(CardDto card);
         void DeleteCard(int cardId);
-        List<Card> GetAllCards(int userId);
-        List<Card> GetCardsByStackId(int stackId);
+        List<CardDto> GetAllCards(int userId);
+        List<CardDto> GetCardsByStackId(int stackId);
     }
 }
