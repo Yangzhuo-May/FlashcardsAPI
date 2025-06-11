@@ -1,4 +1,5 @@
-﻿using FlashcardsAPI.Dtos;
+﻿using System.Text.Json;
+using FlashcardsAPI.Dtos;
 using FlashcardsAPI.Models;
 using FlashcardsAPI.Repository;
 
@@ -8,11 +9,13 @@ namespace FlashcardsAPI.Services
     {
         private readonly ICardRepository _cardRepository;
         private readonly IStackRepository _stackRepository;
+        private readonly ILogger<CardService> _logger;
 
-        public CardService(ICardRepository cardRepository, IStackRepository stackRepository)
+        public CardService(ICardRepository cardRepository, IStackRepository stackRepository, ILogger<CardService> logger)
         {
             _stackRepository = stackRepository;
             _cardRepository = cardRepository;
+            _logger = logger;
         }
 
         public void AddCard(CardDto card, int userId)
@@ -85,15 +88,21 @@ namespace FlashcardsAPI.Services
         {
             try
             {
+                _logger.LogInformation("Start Editing，CardId: {CardId}", card.CardId);
+                _logger.LogInformation("Start Editing, Card: {card}", JsonSerializer.Serialize(card));
+
                 var cardDb = _cardRepository.FindCard(card.CardId);
                 if (cardDb == null)
                 {
+                    _logger.LogWarning("Didn't find card with CardId: {CardId} ", card.CardId);
                     throw new Exception("Card not found!!");
                 }
                 _cardRepository.UpdateCard(cardDb, card);
+                _logger.LogInformation("Card {CardId} editing completed", card.CardId);
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, "Error happened when editing card {CardId}", card.CardId);
                 throw new Exception(ex.Message);
             }
         }
@@ -115,16 +124,17 @@ namespace FlashcardsAPI.Services
             }
         }
 
-        public List<Card> GetAllCards(int userId)
+        public List<CardDto> GetAllCards(int userId)
         {
             try
             {
                 var stacks = _stackRepository.GetAllStacks(userId).ToList();
-                var cards = new List<Card>();
+                var cards = new List<CardDto>();
 
                 foreach (var item in stacks)
                 {
                     var stackCards = _cardRepository.GetCardsByStackId(item.StackId);
+
                     cards.AddRange(stackCards);
                 }
 
@@ -139,7 +149,7 @@ namespace FlashcardsAPI.Services
                 throw new Exception(ex.Message);
             }
         }
-        public List<Card> GetCardsByStackId(int stackId)
+        public List<CardDto> GetCardsByStackId(int stackId)
         {
             try
             {
