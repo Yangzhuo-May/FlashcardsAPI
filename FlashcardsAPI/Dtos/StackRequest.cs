@@ -4,5 +4,6 @@
     {
         public int StackId { get; set; }
         public string NewStackName { get; set; }
+        public bool IsPublic { get; set; }
     }
 }

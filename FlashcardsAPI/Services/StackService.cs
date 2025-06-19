@@ -46,9 +46,14 @@ namespace FlashcardsAPI.Services
             }
         }
 
-        public void AddStack(string stackName, int userId)
+        public void AddStack(StackRequest request, int userId)
         {
-            Stack newStack = new Stack { StackName = stackName, UserId = userId };
+            Stack newStack = new Stack 
+            { 
+                StackName = request.NewStackName, 
+                UserId = userId,
+                IsPublic = request.IsPublic,
+            };
             try
             { 
                 _stackRepository.InsertStack(newStack); 

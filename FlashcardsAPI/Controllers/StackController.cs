@@ -55,7 +55,7 @@ namespace FlashcardsAPI.Controllers
             try
             {
                 var userId = User.GetUserId();
-                _stackService.AddStack(request.NewStackName, userId);
+                _stackService.AddStack(request, userId);
                 var updatedStacks = _stackService.GetAllStacks(userId);
                 return Ok(new { message = "Stack added successfully", stack = updatedStacks });
             }
