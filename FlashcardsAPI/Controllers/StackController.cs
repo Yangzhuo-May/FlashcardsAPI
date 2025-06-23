@@ -1,4 +1,5 @@
 ﻿using System.Security.Claims;
+using Azure.Core;
 using FlashcardsAPI.Dtos;
 using FlashcardsAPI.Extensions;
 using FlashcardsAPI.Models;
@@ -49,6 +50,20 @@ namespace FlashcardsAPI.Controllers
             }
         }
 
+        [HttpGet("{id}")]
+        public IActionResult GetStackById(int id)
+        {
+            try
+            {
+                var foundStack = _stackService.FindStackById(id);
+                return Ok(new { stack = foundStack });
+            }
+            catch (Exception ex)
+            {
+                return new BadRequestObjectResult(ex.Message);
+            }
+        }
+
         [HttpPost]
         public IActionResult AddStack([FromBody] StackRequest request)
         {
@@ -74,6 +89,22 @@ namespace FlashcardsAPI.Controllers
                 _stackService.EditStack(request);
                 var userId = User.GetUserId();
                 var updatedStacks = _stackService.GetAllStacks(userId);
+                return Ok(new { message = "Stack edited successfully", stack = updatedStacks });
+            }
+            catch (Exception ex)
+            {
+                return new BadRequestObjectResult(ex.Message);
+            }
+        }
+
+        [HttpPatch("{id}")]
+        public IActionResult UpdateStackPublicStatus(int id, [FromBody] StackRequest request)
+        {
+            try
+            {
+                _stackService.UpdateStackPublicStatus(id, request);
+                var userId = User.GetUserId();
+                var updatedStacks = _stackService.FindStackById(id);
                 return Ok(new { message = "Stack edited successfully", stack = updatedStacks });
             }
             catch (Exception ex)

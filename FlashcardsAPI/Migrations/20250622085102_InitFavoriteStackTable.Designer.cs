@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FlashcardsAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250609134755_SessionData")]
-    partial class SessionData
+    [Migration("20250622085102_InitFavoriteStackTable")]
+    partial class InitFavoriteStackTable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -104,24 +104,15 @@ namespace FlashcardsAPI.Migrations
 
             modelBuilder.Entity("FlashcardsAPI.Models.FavoriteStack", b =>
                 {
-                    b.Property<int>("FavoriteId")
-                        .ValueGeneratedOnAdd()
+                    b.Property<int>("UserId")
                         .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("FavoriteId"));
 
                     b.Property<int>("StackId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer");
-
-                    b.HasKey("FavoriteId");
+                    b.HasKey("UserId", "StackId");
 
                     b.HasIndex("StackId");
-
-                    b.HasIndex("UserId", "StackId")
-                        .IsUnique();
 
                     b.ToTable("FavoriteStacks");
                 });

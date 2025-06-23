@@ -27,6 +27,12 @@ namespace FlashcardsAPI.Repository
             _context.SaveChanges();
         }
 
+        public void UpdateStackPublicStatus(Stack stackToUpdate, bool isPublic)
+        {
+            stackToUpdate.IsPublic = isPublic;
+            _context.SaveChanges();
+        }
+
         public void DeleteStack(Stack stack)
         { 
             _context.Remove(stack);

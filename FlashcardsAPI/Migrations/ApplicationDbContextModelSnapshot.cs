@@ -101,24 +101,15 @@ namespace FlashcardsAPI.Migrations
 
             modelBuilder.Entity("FlashcardsAPI.Models.FavoriteStack", b =>
                 {
-                    b.Property<int>("FavoriteId")
-                        .ValueGeneratedOnAdd()
+                    b.Property<int>("UserId")
                         .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("FavoriteId"));
 
                     b.Property<int>("StackId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer");
-
-                    b.HasKey("FavoriteId");
+                    b.HasKey("UserId", "StackId");
 
                     b.HasIndex("StackId");
-
-                    b.HasIndex("UserId", "StackId")
-                        .IsUnique();
 
                     b.ToTable("FavoriteStacks");
                 });

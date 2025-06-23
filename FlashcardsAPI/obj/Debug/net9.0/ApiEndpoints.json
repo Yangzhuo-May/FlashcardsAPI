@@ -137,6 +137,38 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "FlashcardsAPI.Controllers.FavoriteController",
+    "Method": "AddFavoriteStack",
+    "RelativePath": "api/Favorite",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "FlashcardsAPI.Dtos.FavoriteStackRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FlashcardsAPI.Controllers.FavoriteController",
+    "Method": "DeleteFavoriteStack",
+    "RelativePath": "api/Favorite",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "FlashcardsAPI.Dtos.FavoriteStackRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "FlashcardsAPI.Controllers.StackController",
     "Method": "GetAllStacks",
     "RelativePath": "api/Stack",
@@ -164,6 +196,22 @@
   },
   {
     "ContainingType": "FlashcardsAPI.Controllers.StackController",
+    "Method": "GetStackById",
+    "RelativePath": "api/Stack/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FlashcardsAPI.Controllers.StackController",
     "Method": "EditStack",
     "RelativePath": "api/Stack/{id}",
     "HttpMethod": "PUT",
@@ -178,6 +226,27 @@
       {
         "Name": "id",
         "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FlashcardsAPI.Controllers.StackController",
+    "Method": "UpdateStackPublicStatus",
+    "RelativePath": "api/Stack/{id}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "FlashcardsAPI.Dtos.StackRequest",
         "IsRequired": true
       }
     ],

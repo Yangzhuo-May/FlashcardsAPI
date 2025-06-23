@@ -7,11 +7,27 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FlashcardsAPI.Migrations
 {
     /// <inheritdoc />
-    public partial class RenameKeyOrChangeFK : Migration
+    public partial class InitFavoriteStackTable : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "AnswerRecords",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    StackId = table.Column<int>(type: "integer", nullable: false),
+                    UserId = table.Column<int>(type: "integer", nullable: false),
+                    AnsweredAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    CorrectRate = table.Column<float>(type: "real", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AnswerRecords", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
@@ -35,7 +51,7 @@ namespace FlashcardsAPI.Migrations
                     StackId = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     StackName = table.Column<string>(type: "text", nullable: false),
-                    isProficient = table.Column<bool>(type: "boolean", nullable: false),
+                    IsProficient = table.Column<bool>(type: "boolean", nullable: false),
                     IsPublic = table.Column<bool>(type: "boolean", nullable: false),
                     FavoriteCount = table.Column<int>(type: "integer", nullable: false),
                     UserId = table.Column<int>(type: "integer", nullable: false)
@@ -101,14 +117,12 @@ namespace FlashcardsAPI.Migrations
                 name: "FavoriteStacks",
                 columns: table => new
                 {
-                    FavoriteId = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     StackId = table.Column<int>(type: "integer", nullable: false),
                     UserId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_FavoriteStacks", x => x.FavoriteId);
+                    table.PrimaryKey("PK_FavoriteStacks", x => new { x.UserId, x.StackId });
                     table.ForeignKey(
                         name: "FK_FavoriteStacks_Stacks_StackId",
                         column: x => x.StackId,
@@ -192,12 +206,6 @@ namespace FlashcardsAPI.Migrations
                 column: "StackId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_FavoriteStacks_UserId_StackId",
-                table: "FavoriteStacks",
-                columns: new[] { "UserId", "StackId" },
-                unique: true);
-
-            migrationBuilder.CreateIndex(
                 name: "IX_StackLearningStats_StackId1",
                 table: "StackLearningStats",
                 column: "StackId1");
@@ -221,6 +229,9 @@ namespace FlashcardsAPI.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "AnswerRecords");
+
             migrationBuilder.DropTable(
                 name: "Answers");
 

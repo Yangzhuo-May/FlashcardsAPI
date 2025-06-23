@@ -7,7 +7,9 @@ namespace FlashcardsAPI.Services
     {
         void AddStack(StackRequest request, int userId);
         void EditStack(StackRequest request);
+        void UpdateStackPublicStatus(int id, StackRequest request);
         void DeleteStack(int stackId);
+        StackRequest FindStackById(int id);
         List<Stack> GetAllStacks(int userId);
         List<Stack> GetAllPublicStacks();
     }

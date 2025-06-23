@@ -6,7 +6,7 @@ namespace FlashcardsAPI.Extensions
     {
         public static int GetUserId(this ClaimsPrincipal user)
         {
-            var userIdString = user.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userIdString = user.FindFirstValue("UserId");
             if (string.IsNullOrEmpty(userIdString))
             {
                 throw new ArgumentException("User ID claim is missing.");

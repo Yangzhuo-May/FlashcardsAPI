@@ -55,7 +55,6 @@ namespace FlashcardsAPI.Controllers
             var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
             if (userIdClaim == null)
             {
-                Console.WriteLine("⚠️ User ID is null");
                 return BadRequest("User ID is missing.");
             }
 

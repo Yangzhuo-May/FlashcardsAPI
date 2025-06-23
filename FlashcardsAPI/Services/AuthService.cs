@@ -101,7 +101,7 @@ namespace FlashcardsAPI.Services
 
             var claims = new[]
             {
-                new Claim(ClaimTypes.NameIdentifier, userDb.UserId.ToString()),
+                new Claim("UserId", userDb.UserId.ToString()),
                 new Claim(JwtRegisteredClaimNames.Sub, loginRequest.Email),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };

@@ -1,4 +1,5 @@
-﻿using FlashcardsAPI.Controllers;
+﻿using Azure.Core;
+using FlashcardsAPI.Controllers;
 using FlashcardsAPI.Dtos;
 using FlashcardsAPI.Models;
 using FlashcardsAPI.Repository;
@@ -46,13 +47,25 @@ namespace FlashcardsAPI.Services
             }
         }
 
+        public StackRequest FindStackById(int id)
+        {
+            var stackDb = _stackRepository.FindStack(id);
+            StackRequest stackDto = new StackRequest
+            {
+                StackId = stackDb.StackId,
+                NewStackName = stackDb.StackName,
+                IsPublic = stackDb.IsPublic,
+            };
+            return stackDto;
+        }
+
         public void AddStack(StackRequest request, int userId)
         {
             Stack newStack = new Stack 
             { 
                 StackName = request.NewStackName, 
                 UserId = userId,
-                IsPublic = request.IsPublic,
+                IsPublic = request.IsPublic ?? false,
             };
             try
             { 
@@ -82,6 +95,25 @@ namespace FlashcardsAPI.Services
             }
         }
 
+        public void UpdateStackPublicStatus(int id, StackRequest request)
+        {
+            try
+            {
+                var stackDb = _stackRepository.FindStack(id);
+                var isPublic = request.IsPublic;
+                if (stackDb == null || isPublic == null)
+                {
+                    throw new Exception("Stack not found!!");
+                }
+
+                    _stackRepository.UpdateStackPublicStatus(stackDb, isPublic ?? false);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        
         public void DeleteStack(int stackId)
         {
             try

@@ -43,8 +43,7 @@ namespace FlashcardsAPI.Data
                 .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<FavoriteStack>()
-                .HasIndex(f => new { f.UserId, f.StackId })
-                .IsUnique();
+                .HasKey(f => new { f.UserId, f.StackId });
         }
     }
 }
